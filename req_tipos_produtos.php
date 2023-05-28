@@ -1,6 +1,5 @@
 <?php
 $form_placa_mae='
-*informar outra marca*
 <div class="entrar-items">
     <label for="fabricante">Fabricante:*</label>
     <input type="text" id="fabricante" name="fabricante" placeholder="ASUS" required>
@@ -41,7 +40,7 @@ $form_placa_mae='
     <p id="mens_max_ram" class="mens"></p>
 </div>
 <div class="entrar-items">
-    <label for="tipo_ram">Tipo de memória RAM:*</label>
+    <label for="tipo_ram">Geração de memória RAM:*</label>
     <select name="tipo_ram" id="tipo_ram" required>
         <option value="">Selecione uma opção</option>
         <option value="DDR">DDR</option>
@@ -108,7 +107,6 @@ $form_placa_mae='
 
 
 $form_processador='
-*informar outra marca*
 <div class="entrar-items">
     <label for="fabricante">Fabricante:*</label>
     <select name="fabricante" id="fabricante" required>
@@ -262,8 +260,8 @@ $form_armazenamento='
     <label for="tipo_armazenamento">Tipo de armazenamento:*</label>
     <select name="tipo_armazenamento" id="tipo_armazenamento" required>
         <option value="">Selecione uma opção</option>
-        <option value="pcie">HD</option>
-        <option value="sata">SSD</option>
+        <option value="HD">HD</option>
+        <option value="SSD">SSD</option>
     </select>
     <p id="mens_tipo_armazenamento" class="mens"></p>
 </div>

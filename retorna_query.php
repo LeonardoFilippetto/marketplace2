@@ -160,6 +160,8 @@ function retorna_query_anuncio($array_anunc, $id_vendedor){
     $img_princ=$array_anunc['img_princ'];
     $imgs_sec=$array_anunc['imgs_sec'];
 
+    $preco = str_replace(",", ".", $preco);
+
     $query="INSERT INTO anuncios (id_vendedor, titulo_anuncio, categoria_produto, preco, estoque, img_princ, imgs_sec, descricao, informacoes_adicionais) VALUES ('$id_vendedor', '$titulo', '$tipo_produto', '$preco', '$estoque', '$img_princ', '$imgs_sec', '$descricao', '$info_adic')";
 
     return $query;

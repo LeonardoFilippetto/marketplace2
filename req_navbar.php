@@ -21,7 +21,17 @@
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">  
                 <li>
+                  <?php
+                    if(!isset($_SESSION)) {
+                        session_start();
+                    }
+                        if(!isset($_SESSION['id_usuario'])){
+                  ?>
                   <a class="nav-link" href="login.php"> <img src="img/do-utilizador.svg" alt="login" width="30px">Login</a>
+                  <?php
+                        }
+                  ?>
+                  <a class="nav-link" href="meus_anuncios.php">Meus anúncios</a>
                 </li>
                
                 <li class="nav-item dropdown">

@@ -9,6 +9,7 @@ if(!isset($_SESSION['id_usuario'])){
 <html lang="pt-br">
 <head>
     <link rel="stylesheet" type="text/css" href="css/cadastro.css">
+    <script src="js/cadastro_anuncio_inicio.js" defer></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -202,16 +203,16 @@ footer p{
                 <div class="cond_prod">
                     <label>Condição do Produto:*</label>
                     <div class="radio">
-                        <input type="radio" id="novo" name="cond" value="novo" onclick="mostrarUso(evento)" > <label for="novo" style="margin:0; width:30%; padding:0.2rem;">Novo</label>
+                        <input type="radio" id="novo" name="cond" value="novo" onclick="mostrarUso(event)" > <label for="novo" style="margin:0; width:30%; padding:0.2rem;">Novo</label>
                     </div>
                     <div class="radio">
-                        <input type="radio" id="usado" name="cond" value="usado" onclick="mostrarUso(evento)"> <label for="usado" style="margin:0; width:30%; padding:0.2rem;">Usado</label>
+                        <input type="radio" id="usado" name="cond" value="usado" onclick="mostrarUso(event)"> <label for="usado" style="margin:0; width:30%; padding:0.2rem;">Usado</label>
                     </div><br>
                 </div>
                 
-                <div class="entrar-items">
-                    <label for="tempo_uso">Tempo de uso:*</label>
-                    <select name="tempo_uso" id="tempo_uso" >
+                <div class="entrar-items" id="div_tempo_uso" style="display:none;">
+                    <label for="tempo_uso">Tempo de uso do produto:*</label>
+                    <select name="tempo_uso" id="sel_tempo_uso" >
                       <option value="">Selecione uma opção</option>
                       <option value="0">Menos de um mês</option>
                       <option value="1">1 mês</option>
@@ -234,6 +235,7 @@ footer p{
                     </select>
                     <p id="mens_tempo_uso" class="mens"></p>
                 </div>
+
                 <div class="entrar-items">
                     <label for="estoque">Unidades do produto em estoque:*</label>
                     <input type="number" id="estoque" name="estoque" placeholder="20" required >

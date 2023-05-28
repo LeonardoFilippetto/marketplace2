@@ -39,7 +39,7 @@ nav {
     flex-wrap: wrap;
     font-family: Georgia, 'Times New Roman', Times, serif;
     background-color: #000000;
-    height: 10vh;
+    height: 4.4rem;
     width: 100%;
     top: 0;
 }
@@ -54,7 +54,7 @@ nav {
 }
 .navbar {
     background-color: #000;
-    height: 10vh;
+    height: 4.4rem;
 }
 
 
@@ -100,9 +100,9 @@ input[type=text] {
 
 #grid {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
-    margin-top: 5vh;
+    margin-top: 0.5rem;
     gap: -5px;
 }
 
@@ -110,7 +110,7 @@ input[type=text] {
     width: 17rem;
     height: 27.5rem;
     display: flex;
-    margin: 0.35rem;
+    margin: 0.8rem;
     padding: 0.30rem;
     flex-direction: column;
     justify-content: space-around;

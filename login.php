@@ -1,7 +1,7 @@
 <?php
-if(isset($_POST['pagina_anterior'])){
-    $pagina_anterior=$_POST['pagina_anterior'];//input hidden
-}
+// if(isset($_POST['pagina_anterior'])){
+//     $pagina_anterior=$_POST['pagina_anterior'];//input hidden
+// }
 require("conexao.php");
 $mensagem="";
 if(isset($_POST['email'])){
@@ -25,11 +25,11 @@ if(isset($_POST['email'])){
             session_start();
             $_SESSION["email_usuario"] = $email_bd;
             $_SESSION["id_usuario"] = $id_bd;
-            if($pagina_anterior){
-                header("Location:$pagina_anterior");
-            }else{
+            // if($pagina_anterior){
+            //     header("Location:$pagina_anterior");
+            // }else{
                 header("Location:index.php");
-            }
+            // }
         }else{
             $mensagem="Email ou senha inválidos!";
         }

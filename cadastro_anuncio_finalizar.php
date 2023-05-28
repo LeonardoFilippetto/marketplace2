@@ -23,13 +23,13 @@ if(isset($_POST['descricao'])){
     $nome_img_princ=$nome_imgs.".".$extension;
 
     $_FILES['img_princ']['name'] = $nome_img_princ;
-    $uploaddir = 'D:/xampp/htdocs/marketplace/marketplace/img/';
+    $uploaddir = '/storage/ssd3/037/20812037/public_html/img/';
     $uploadfile = $uploaddir.$_FILES['img_princ']['name'];
     move_uploaded_file($_FILES['img_princ']['tmp_name'], $uploadfile);
 
-    echo "<pre>";
-    print_r($_FILES['imgs_sec']['name']);
-    echo "</pre>";
+    // echo "<pre>";
+    // print_r($_FILES['imgs_sec']['name']);
+    // echo "</pre>";
 
     $countfiles = count($_FILES['imgs_sec']['name']);
     $nome_imgs_sec="";
@@ -52,8 +52,7 @@ if(isset($_POST['descricao'])){
     $query_anuncio=retorna_query_anuncio($_SESSION['post']['anuncio'], $_SESSION['id_usuario']);
     $result = mysqli_query($con, $query_anuncio);
 
-
-    $query_sel_anuncio = "SELECT id_anuncio FROM anuncios WHERE id_usuario='".$_SESSION['id_usuario']."' ORDER BY id_anuncio DESC LIMIT 1";
+    $query_sel_anuncio = "SELECT id_anuncio FROM anuncios WHERE id_vendedor='".$_SESSION['id_usuario']."' ORDER BY id_anuncio ASC LIMIT 1";
     $result = mysqli_query($con, $query_sel_anuncio);
     //verificar funcionamento
     $row = mysqli_fetch_array($result);
@@ -69,6 +68,7 @@ if(isset($_POST['descricao'])){
 
     echo("<script>alert('dados cadastrados')</script>");
     unset($_SESSION['post']);
+    header("Location:meus_anuncios.php");
 
 }else{
     header("Location:index.php");

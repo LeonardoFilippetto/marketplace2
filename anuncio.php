@@ -4,6 +4,7 @@ if(!isset($_GET['id_anunc']))
     header("Location:index.php");
 else{
     require("conexao.php");
+    require("req_funcao_anuncio.php"); 
 
     $id_anunc=$_GET['id_anunc'];
 
@@ -30,16 +31,18 @@ else{
     $query="SELECT usuarios.nome AS nome, usuarios.nome_fantasia AS nome_fantasia, usuarios.razao_social AS razao_social, produtos.* FROM usuarios INNER JOIN produtos ON usuarios.id_usuario=produtos.id_vendedor WHERE produtos.id_anuncio='$id_anunc'";
     $result = mysqli_query($con, $query);
     $row_vend_prod = mysqli_fetch_array($result);
-    
-    echo"muahahahahaaaaaaaaaaaaaaaaaaaaa<pre>";
-    print_r($row_vend_prod);
-    echo"</pre>";
 
     $razao_social=$row_vend_prod['razao_social'];
     $nome_fantasia=$row_vend_prod['nome_fantasia'];
     $nome=$row_vend_prod['nome'];
 
     $fabricante=$row_vend_prod['fabricante'];
+
+    $espec_tec = monta_especificacoes($row_vend_prod);
+
+    // echo "<pre>";
+    // print_r($row_vend_prod);
+    // echo"</pre>";
 
 }
 ?>
@@ -179,7 +182,7 @@ else{
         </div>
         <div id="especific_tec" class="secao">
             <h3 class='titulo_secao'>Especificações técnicas</h3>
-            <p class='p_secao'><?php echo '**especificações**' ?></p>
+            <p class='p_secao'><?php echo $espec_tec ?></p>
         </div>
         <div id="info_adic" class="secao">
             <h3 class='titulo_secao'>Informações adicionais</h3>

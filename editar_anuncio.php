@@ -1,36 +1,43 @@
 <?php
 session_start();
-if(!isset($_SESSION['id_usuario'])){
-  header("Location:login.php");
+if (!isset($_SESSION['id_usuario'])) {
+    header("Location: login.php");
 }
 require("conexao.php");
-if(isset($_POST['edit'])){
-    $id_anuncio=$_POST['edit'];
-    $query_sel_anuncio = "SELECT * FROM anuncios WHERE id_vendedor='".$_SESSION['id_usuario']."' AND id_anuncio='".$id_anuncio."' LIMIT 1";
+
+ob_start(); // Início do buffer de saída
+
+if (isset($_POST['edit'])) {
+    $id_anuncio = $_POST['edit'];
+    $query_sel_anuncio = "SELECT * FROM anuncios WHERE id_vendedor='" . $_SESSION['id_usuario'] . "' AND id_anuncio='" . $id_anuncio . "' LIMIT 1";
     $result = mysqli_query($con, $query_sel_anuncio);
     $row = mysqli_fetch_array($result);
-    $titulo=$row['titulo_anuncio'];
-    $preco=$row['preco'];
-    $estoque=$row['estoque'];
-    $descricao=$row['descricao'];
-    $info_adic=$row['informacoes_adicionais'];
-}elseif(isset($_POST['titulo_anuncio'])){
-    $id_anuncio=$_POST['id_anuncio'];
-    $titulo=$_POST['titulo_anuncio'];
-    $preco=$_POST['preco_anunc'];
-    $estoque=$_POST['estoque'];
-    $descricao=$_POST['descricao'];
-    $info_adic=$_POST['info_adic'];
-    $query="UPDATE anuncios SET titulo_anuncio='".$titulo."', preco='".$preco."', estoque='".$estoque."', descricao='".$descricao."', informacoes_adicionais='".$info_adic."' WHERE id_anuncio='".$id_anuncio."' AND id_vendedor='".$_SESSION['id_usuario']."'";
-    $result=mysqli_query($con, $query);
-    if($result){
-        echo "<script>alert('Anúncio alterado com sucesso!')</script>";
-        header("Location:meus_anuncios.php");
-    }else{
-        echo "<script>alert('Houve um erro ao alterar o anúncio!')</script>";
-        header("Location:meus_anuncios.php");
+    $titulo = $row['titulo_anuncio'];
+    $preco = $row['preco'];
+    $estoque = $row['estoque'];
+    $descricao = $row['descricao'];
+    $info_adic = $row['informacoes_adicionais'];
+} elseif (isset($_POST['titulo_anuncio'])) {
+    $id_anuncio = $_POST['id_anuncio'];
+    $titulo = $_POST['titulo_anuncio'];
+    $preco = $_POST['preco_anunc'];
+    $estoque = $_POST['estoque'];
+    $descricao = $_POST['descricao'];
+    $info_adic = $_POST['info_adic'];
+    $query = "UPDATE anuncios SET titulo_anuncio='" . $titulo . "', preco='" . $preco . "', estoque='" . $estoque . "', descricao='" . $descricao . "', informacoes_adicionais='" . $info_adic . "' WHERE id_anuncio='" . $id_anuncio . "' AND id_vendedor='" . $_SESSION['id_usuario'] . "'";
+    $result = mysqli_query($con, $query);
+    if ($result) {
+        ob_end_clean(); // Limpa o buffer de saída antes de enviar o cabeçalho
+        header("Location: meus_anuncios.php");
+        exit(); // Encerra a execução do script após o redirecionamento
+    } else {
+        ob_end_clean(); // Limpa o buffer de saída antes de enviar o cabeçalho
+        header("Location: meus_anuncios.php");
+        exit(); // Encerra a execução do script após o redirecionamento
     }
 }
+
+ob_end_flush(); // Envia o conteúdo do buffer de saída para o navegador
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
