@@ -1,8 +1,8 @@
 <?php
+session_start();
 require("req_tipos_produtos.php");
 
 if(isset($_POST['titulo_anuncio'])){
-    session_start();
     $_SESSION['post']['anuncio']=$_POST;
     if($_POST['tipo_produto']=='placa_mae'){
         $form_produto = $form_placa_mae;

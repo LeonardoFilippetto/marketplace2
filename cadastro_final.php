@@ -1,4 +1,5 @@
 <?php
+session_start();
 $hidden_inputs = "";
 if(isset($_POST['pagina_anterior'])){
     $pagina_anterior=$_POST['pagina_anterior'];//input hidden
@@ -7,7 +8,6 @@ if(isset($_POST['pagina_anterior'])){
 
 if(isset($_POST['cad'])){
     $cad=$_POST['cad'];
-    session_start();
     if(!isset($_SESSION["senha"])){
         $options = ['cost' => 12,];
         $_SESSION["senha"]=password_hash($_POST['senha'],   PASSWORD_BCRYPT, $options);

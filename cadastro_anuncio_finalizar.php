@@ -1,4 +1,5 @@
 <?php
+session_start();
 function random_string($length) {
     $str = random_bytes($length);
     $str = base64_encode($str);
@@ -10,7 +11,6 @@ function random_string($length) {
 if(isset($_POST['descricao'])){
     require("retorna_query.php");
     require("conexao.php");
-    session_start();
     $_SESSION['post']['anuncio']['descricao']=$_POST['descricao'];
     $_SESSION['post']['anuncio']['info_adic']=$_POST['info_adic'];
 

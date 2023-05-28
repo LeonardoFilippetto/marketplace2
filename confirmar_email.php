@@ -1,6 +1,6 @@
 <?php
-require("conexao.php");
 session_start();
+require("conexao.php");
 if(isset($_POST["pagina_anterior"])){
     $pag_ant=$_POST["pagina_anterior"];
 }

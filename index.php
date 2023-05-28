@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*$query="SELECT * FROM anuncios WHERE titulo_anuncio LIKE'%$termo_busca%";
 //result
 If(mysqli_num_rows($result)==0){

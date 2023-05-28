@@ -1,6 +1,6 @@
 <?php
+session_start();
 if(isset($_POST['ean'])){
-    session_start();
     $_SESSION['post']['produto']=$_POST;
     $_SESSION['post']['produto']['tipo_produto']=$_SESSION['post']['anuncio']['tipo_produto'];
     //$celular=str_replace("-","", $_POST['celular']);

@@ -1,4 +1,5 @@
 <?php
+session_start();
 // if(isset($_POST['pagina_anterior'])){
 //     $pagina_anterior=$_POST['pagina_anterior'];//input hidden
 // }
@@ -22,7 +23,6 @@ if(isset($_POST['email'])){
         $id_bd=$row['id_usuario'];
 
         if(password_verify($senha_form, $senha_bd)) {
-            session_start();
             $_SESSION["email_usuario"] = $email_bd;
             $_SESSION["id_usuario"] = $id_bd;
             // if($pagina_anterior){
