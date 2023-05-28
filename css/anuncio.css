@@ -1,0 +1,187 @@
+
+/*#logo2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+}
+
+a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    flex-wrap: wrap;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #000000;
+    height: 10vh;
+    width: 100%;
+    top: 0;
+}
+
+#nav-list {
+    list-style: none;
+    display: flex;
+}
+
+#nav-list li {
+    margin-left: 32px;
+}
+
+
+.search-container {
+    float: right;
+    border-radius: 30px;
+    background-color: #e4e4e4;
+    display: flex;
+    align-items: center;
+    padding-right: 0.3rem;
+}
+
+input[type=text] {
+    padding: 0.4rem 0.8rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    background-color: #e4e4e4;
+    color: #363636;
+    text-align: left;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+#lupa{
+    height:1rem; 
+    margin:0.2rem;
+    
+}
+#lupa:hover{
+    cursor: pointer;
+}*/
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+h1{
+    width:100%;
+    margin: 1rem 0;
+}
+
+#info_secundaria{
+    min-height: 12rem;
+}
+
+.secao{
+    background-color: #F7F7F7;
+    width: 80rem;
+    max-width: 96vw;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    clear: both;
+}
+
+.secao p {
+    white-space: normal;
+    text-align: left;
+}
+
+#info_geral p{
+    text-align: center;
+}
+
+#main{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+#imagens{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.secao_main{
+    width: 35rem;
+    max-width: 48vw;
+    height: 25rem;
+    margin: 1rem 0;
+}
+
+.imgs_secundarias{
+    width: 8rem;
+    height: 25rem;
+}
+
+.img_sec{
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img_sec img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#img_principal{
+    width: 25rem;
+    height: 25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#img_principal img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#info_principal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#info_geral{
+    width:100%
+}
+
+#frete label{
+    display:block;
+    width: 100%;
+}
+
+#frete input{
+    text-align: left;
+}
+
+#compra{
+    height:40%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
