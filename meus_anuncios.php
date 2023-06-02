@@ -36,11 +36,11 @@ if(isset($_POST['excl'])){
 
 </head>
 <body>
-    <header>
-        <?php
-            require("req_navbar.php")
-        ?>
-    </header>
+  
+    <?php
+     require("req_navbar.php")
+    ?>
+ 
     
  
     <?php
@@ -48,7 +48,7 @@ if(isset($_POST['excl'])){
         $display_anuncios="";
         $query = "SELECT * FROM anuncios WHERE id_vendedor='".$_SESSION['id_usuario']."'";
         $result = mysqli_query($con, $query);
-        $display_anuncios.= "<h1 style='margin-top:1rem;'>Meus Anúncios</h1><a style='color:#000;' href='cadastro_anuncio_inicio.php'>Criar novo anúncio de venda</a><div id='grid'>";
+        $display_anuncios.= "<h1 style='margin-top:5rem;'>Meus Anúncios</h1><a class='link_criar_anuncio' href='cadastro_anuncio_inicio.php'><i class='fa-solid fa-plus fa-lg'></i>   Criar novo anúncio de venda</a><div id='grid'>";
         if(mysqli_num_rows($result)!=0){
             while ($row = mysqli_fetch_array($result)) {
                 $id_anunc=($row['id_anuncio']);
@@ -72,18 +72,18 @@ if(isset($_POST['excl'])){
                     <span class='preco'>R$ ".$preco."</span>
                     <form method='post' id='excluir' action='meus_anuncios.php'>
                         <input type='hidden' name='excl' value='".$id_anunc."'>
-                        <input type='submit' value='EXCLUIR' onclick='return confirm("."Tem certeza que quer excluir o anúncio?".");'>
+                        <input type='submit' value='EXCLUIR' class='btn_excluir' onclick='return confirm("."Tem certeza que quer excluir o anúncio?".");'>
                     </form>
                     <form method='post' id='editar' action='editar_anuncio.php'>
                         <input type='hidden' name='edit' value='".$id_anunc."'>
                         <input type='hidden' name='id_vend' value='".$_SESSION['id_usuario']."'>
-                        <input type='submit' value='EDITAR'>
+                        <input type='submit' value='EDITAR' class='btn_editar'>
                     </form>
                 </div>";
             }
             $display_anuncios.="</div>";
         }else{
-            $display_anuncios.= "<div><h3>Não há anúncios registrados.</h3><a style='color:#000;' href='cadastro_anuncio_inicio.php'>Criar novo anúncio de venda</a></div>";
+            $display_anuncios.= "<div><h3>Não há anúncios registrados.</h3></div>";
         }
         echo $display_anuncios;
     ?>

@@ -13,166 +13,24 @@ if(isset($_POST['pagina_anterior'])){
 <html lang="pt-br">
 <head>
     <link rel="stylesheet" type="text/css" href="css/cadastro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-... (hash)" crossorigin="anonymous" referrerpolicy="no-referrer">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/cadastro.css">
     <title>Dados do vendedor</title>
     <script defer src="js/cadastro_inicio.js"></script>
-    <style>
-   /* Reset default browser styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   
-  color: #fff;
-}
-
-/* Body styles */
-body {
-  font-family: arial, sans-serif;
-  font-size: 16px;
-  background-color: #fff;
-}
-
-/* Top bar styles */
-#topo {
-  background-color: #434343;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-bottom: solid 5px #0123;
-  height: 5rem;
-}
-
-#topo h1 {
-  font-size: 24px;
-}
-
-#topo a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.logo-stockpc{
-  align-items: center;
-  margin-left: 50%;
-  transform: translate(-50%);
-  margin-top: -25px;
-  position:absolute;
-}
-
-/* Form styles */
-form {
-  color: #fff;
-  background-color:#434343;
-  box-shadow: 0px 0px 10px #222;
-  padding: 20px;
-  max-width: 500px;
-  margin: 20px auto;
-  border-radius: 0.8rem;
-
-}
-
-form h1 {
-  font-size: 32px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.entrar-items {
-  margin-bottom: 20px;
-}
-
-.radio{
-  display:flex;
-  flex-direction: row;
-  align-items: left;
-  justify-items: left;
-  wrap:nowrap;
-  margin: 0.25rem 0;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input[type="text"],
-input[type="number"],
-input[type="email"],
-input[type="password"],
-input[type="date"],
-input[type="tel"],
-select {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 3px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-  font-size: 16px;
-  background-color: #333;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type="number"]{
-  -moz-appearance: textfield;
-}
-
-input[type="submit"] {
-  width: 100%;
-  background-color: #222;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.mens{
-  padding:0.2rem 0;
-  color:#ff0000;
-}
-
-input[type="submit"]:hover {
-  background-color: #555;
-}
-
-footer{
-  height: 5rem;
-  width: 100%;
-  background-color: #434343;
-  text-align: center;
-  font-size: 1rem;
-  margin-top: 0.5rem ;
-  color:#434343;
-  margin-bottom: 0;
-  display: block;
-  border-top: solid 5px #0123;
-}
-
-footer p{
-  padding: 1.8rem;
-}
-
+    <style>
+        form{
+          width: 900px;
+        }
     </style>
 </head>
 <body>
-    <div id="topo">
-        <ul class="back-list">
-            <li><a href="login.php"><h1>Voltar</h1></a></li>
-            <a href="index.php"><img src="img/stockpc/stockpc_escrito.png" alt="" class="logo-stockpc"></a>
-        </ul>
-    </div>
+<header>
+    <a class="btn-voltar" href="login.php"> <h1><i class="fa-solid fa-arrow-left fa-lx" style="color: #ffffff;"></i> Voltar</h1></a>
+</header>
     <form method="POST" action="cadastro_final.php" id="form_cpf" style="display:block">
         <div class="cadastre-se">
             <h1>Informações pessoais</h1>
@@ -307,6 +165,7 @@ footer p{
         </div>
     </form>
 </body>
+<script src="https://kit.fontawesome.com/9e879c63ad.js" crossorigin="anonymous"></script>
     <footer>
         <strong><p>Copyright © 2023 StockPC Inc. Todos os direitos reservados.</p></strong>
     </footer>

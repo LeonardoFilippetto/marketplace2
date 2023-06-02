@@ -20,46 +20,26 @@
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">  
-                <li>
-                  <?php
-                    if(!isset($_SESSION)) {
-                        session_start();
-                    }
-                        if(!isset($_SESSION['id_usuario'])){
-                  ?>
-                  <a class="nav-link" href="login.php"> <img src="img/do-utilizador.svg" alt="login" width="30px">Login</a>
-                  <?php
+                    <li>
+                    <?php
+                        if(!isset($_SESSION)) {
+                            session_start();
                         }
-                  ?>
-                  <a class="nav-link" href="meus_anuncios.php">Meus anúncios</a>
-                </li>
-               
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Peças
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Coolers</a></li>
-                      <li><a class="dropdown-item" href="#">Fontes</a></li>
-                      <li><a class="dropdown-item" href="#">Gabinetes</a></li>
-                      <li><a class="dropdown-item" href="#">Memórias Ram</a></li>
-                      <li><a class="dropdown-item" href="#">Placas de Vídeo</a></li>
-                      <li><a class="dropdown-item" href="#">Placas-Mãe</a></li>
-                      <li><a class="dropdown-item" href="#">Processadores</a></li>
-                      
-                      <li>
-                          <hr class="dropdown-divider">
-                      </li>
-                      <li><a class="dropdown-item" href="#">Something else here</a>
-                      </li>
-                    </ul>
-                </li>
+                            if(!isset($_SESSION['id_usuario'])){
+                    ?>
+                    <a class="nav-link" href="login.php"> <img src="img/do-utilizador.svg" alt="login" width="20px">Login</a>
+                    <?php
+                            }else{
+                                echo'<a class="nav-link" href="index.php?des">Sair</a>';
+   
+                            }
+                    ?>
+                    <a class="nav-link" href="meus_anuncios.php">Meus anúncios</a>
+                    </li> 
+                
                 </ul>
-                <form action="" method="post" id="frm_busca">
-            <div class="search-container">
-            <input type="text" placeholder="Buscar" name="search" id="busca">
-            <i class="fa-solid fa-magnifying-glass" id="lupa"></i>
-            </form>
+                
+
             </div>
             </div>
         </div>

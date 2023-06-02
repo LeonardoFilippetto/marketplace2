@@ -1,0 +1,43 @@
+.link_criar_anuncio {
+    font-size: 18px;
+    color: #5568FE;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.fa-solid:hover {
+    transition: 0.5s;
+    color: #1a2364;
+}
+
+.btn_excluir {
+    width: 5rem;
+    height: 3rem;
+    background-color: #ca3c3c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: 1s;
+    border-radius: 5px;
+}
+
+.btn_excluir:hover {
+    background-color: #791c1c;
+}
+
+.btn_editar {
+    width: 5rem;
+    height: 3rem;
+    background-color: #5568FE;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: 1s;
+    border-radius: 5px;
+}
+
+.btn_editar:hover {
+    background-color: #333f9a;
+}

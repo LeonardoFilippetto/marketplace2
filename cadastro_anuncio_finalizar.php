@@ -1,5 +1,5 @@
 <?php
-session_start();
+  session_start();
 function random_string($length) {
     $str = random_bytes($length);
     $str = base64_encode($str);
@@ -23,7 +23,7 @@ if(isset($_POST['descricao'])){
     $nome_img_princ=$nome_imgs.".".$extension;
 
     $_FILES['img_princ']['name'] = $nome_img_princ;
-    $uploaddir = '/storage/ssd3/037/20812037/public_html/img/';
+    $uploaddir = 'C:/xampp/htdocs/StockPC/img/';
     $uploadfile = $uploaddir.$_FILES['img_princ']['name'];
     move_uploaded_file($_FILES['img_princ']['tmp_name'], $uploadfile);
 
@@ -52,23 +52,30 @@ if(isset($_POST['descricao'])){
     $query_anuncio=retorna_query_anuncio($_SESSION['post']['anuncio'], $_SESSION['id_usuario']);
     $result = mysqli_query($con, $query_anuncio);
 
-    $query_sel_anuncio = "SELECT id_anuncio FROM anuncios WHERE id_vendedor='".$_SESSION['id_usuario']."' ORDER BY id_anuncio ASC LIMIT 1";
+    $query_sel_anuncio = "SELECT id_anuncio FROM anuncios WHERE id_vendedor='".$_SESSION['id_usuario']."' ORDER BY id_anuncio DESC LIMIT 1";
     $result = mysqli_query($con, $query_sel_anuncio);
     //verificar funcionamento
     $row = mysqli_fetch_array($result);
     $id_anuncio=$row['id_anuncio'];
-
-
-
     
 
     $query_produto=retorna_query_produto($_SESSION['post']['produto'], $_SESSION['id_usuario'], $id_anuncio);
 
     $result = mysqli_query($con, $query_produto);
 
+
+    $query_sel_prod = "SELECT id_produto FROM produtos WHERE id_anuncio='".$id_anuncio."'";
+    $result = mysqli_query($con, $query_sel_prod);
+    //verificar funcionamento
+    $row = mysqli_fetch_array($result);
+    $id_prod=$row['id_produto'];
+
+    $query_up_anunc="UPDATE anuncios SET id_produto='".$id_prod."' WHERE id_anuncio='".$id_anuncio."'";
+    $result = mysqli_query($con, $query_up_anunc);
+
     echo("<script>alert('dados cadastrados')</script>");
     unset($_SESSION['post']);
-    header("Location:meus_anuncios.php");
+    //header("Location:meus_anuncios.php");
 
 }else{
     header("Location:index.php");
@@ -78,36 +85,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
   if (is_uploaded_file($_FILES['my_upload']['tmp_name'])) 
   { 
-  	//First, Validate the file name
-  	if(empty($_FILES['my_upload']['name']))
-  	{
-  		echo " File name is empty! ";
-  		exit;
-  	}
+    //First, Validate the file name
+    if(empty($_FILES['my_upload']['name']))
+    {
+      echo " File name is empty! ";
+      exit;
+    }
 
-  	$upload_file_name = $_FILES['my_upload']['name'];
-  	//Too long file name?
-  	if(strlen ($upload_file_name)>100)
-  	{
-  		echo " too long file name ";
-  		exit;
-  	}
+    $upload_file_name = $_FILES['my_upload']['name'];
+    //Too long file name?
+    if(strlen ($upload_file_name)>100)
+    {
+      echo " too long file name ";
+      exit;
+    }
 
-  	//replace any non-alpha-numeric cracters in th file name
-  	$upload_file_name = preg_replace("/[^A-Za-z0-9 \.\-_]/", '', $upload_file_name);
+    //replace any non-alpha-numeric cracters in th file name
+    $upload_file_name = preg_replace("/[^A-Za-z0-9 \.\-_]/", '', $upload_file_name);
 
-  	//set a limit to the file upload size
-  	if ($_FILES['my_upload']['size'] > 1000000) 
-  	{
-		echo " too big file ";
-  		exit;        
+    //set a limit to the file upload size
+    if ($_FILES['my_upload']['size'] > 1000000) 
+    {
+    echo " too big file ";
+      exit;        
     }
 
     //Save the file
     $dest=__DIR__.'/uploads/'.$upload_file_name;
     if (move_uploaded_file($_FILES['my_upload']['tmp_name'], $dest)) 
     {
-    	echo 'File Has Been Uploaded !';
+      echo 'File Has Been Uploaded !';
     }
   }
 }*/

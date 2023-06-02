@@ -1,16 +1,9 @@
 <?php
 session_start();
-/*$query="SELECT * FROM anuncios WHERE titulo_anuncio LIKE'%$termo_busca%";
-//result
-If(mysqli_num_rows($result)==0){
-$palavras_busca=explode(' ', $termo_busca);
-$query="SELECT * FROM anuncios WHERE ";
-Foreach($palavras_busca as $palavra){
-    $query.="titulo_anuncio LIKE'%$palavra%' OR ";
+if(isset($_GET['des'])){
+    session_destroy();
+    session_start();
 }
-    $query= rtrim('OR ', $query);
-//result
-} */
 require("conexao.php");
 if(isset($_POST['search'])){
     $termo_busca=strtolower($_POST['search']);
@@ -43,7 +36,7 @@ if(isset($_POST['search'])){
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>marketplace</title>
+        <title>StockPC  </title>
         <link rel="stylesheet" href="css/default.css">
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -53,6 +46,7 @@ if(isset($_POST['search'])){
         rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
         <script defer src="https://kit.fontawesome.com/0e01c81990.js" crossorigin="anonymous"></script>
+        
 
       
     </head>
@@ -62,6 +56,24 @@ if(isset($_POST['search'])){
         require "req_navbar.php" 
     ?>
  
+    <div class="carousel-container">
+        <div class="carousel-slide">
+            <img src="img/banner.png" alt="" class="banner_img">
+        </div>
+        <div class="carousel-slide">
+            <img src="img/banner02.png" alt="" class="banner_img">
+        </div>
+        
+        <!-- Controles de navegação -->
+        <a href="#" class="carousel-prev"><i class="fa-solid fa-chevron-right fa-rotate-180 fa-lg" style="color: #ffffff;"></i></a>
+        <a href="#" class="carousel-next"><i class="fa-solid fa-chevron-right fa-lg" style="color: #ffffff;"></i></a>
+    </div>
+
+
+    <!-- <section class='banner'>
+        <img src="img/banner.png" alt="" class="banner_img">
+    </section> -->
+
     <?php
     /*$palavras_chave = explode(' ', $termo_busca);
     $palavras_chave_norm = array_map(function($palavra) {
@@ -114,7 +126,8 @@ if(isset($_POST['search'])){
     <footer>
         <span>Copyright © 2023 StockPC Inc. Todos os direitos reservados.</span>
     </footer>
-   
+
+    <script src="js/carrossel.js"></script>
 
 
     </body>
