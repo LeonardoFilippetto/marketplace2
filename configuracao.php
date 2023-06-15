@@ -4,6 +4,7 @@
     if(isset($_POST['etapa']))
         $etapa=$_POST['etapa'];
     
+    
     $titulo_etapa=retorna_titulo($etapa);
     
     if(isset($_POST['search'])){
