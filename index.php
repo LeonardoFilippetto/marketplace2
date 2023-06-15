@@ -11,20 +11,25 @@ if(isset($_POST['search'])){
     $query="SELECT * FROM anuncios WHERE LOWER(titulo_anuncio) LIKE'%$termo_busca%'";
     $result = mysqli_query($con, $query);
     if(mysqli_num_rows($result)==0){
-        $palavras_busca=explode(' ', $termo_busca);
-        $query="SELECT * FROM anuncios WHERE ";
-        foreach($palavras_busca as $palavra){
-            $query.="LOWER(titulo_anuncio) LIKE'%$palavra%' OR ";
-        }
-        $query= rtrim($query, ' OR ');
+        $query = "SELECT * FROM anuncios WHERE LEVENSHTEIN_CONTAINS('$termo_busca', titulo_anuncio, ".strlen($termo_busca)/7 .")";
         $result = mysqli_query($con, $query);
         if(mysqli_num_rows($result)==0){
-            $query = "SELECT * FROM anuncios WHERE ";
-            foreach ($palavras_busca as $palavra) {
-              $query .= "LEVENSHTEIN_CONTAINS('$palavra', titulo_anuncio, ".strlen($palavra)/3 .") OR ";
+            $palavras_busca=explode(' ', $termo_busca);
+            $query="SELECT * FROM anuncios WHERE ";
+            foreach($palavras_busca as $palavra){
+                $query.="LOWER(titulo_anuncio) LIKE'%$palavra%' OR ";
             }
-            $query = rtrim($query, "OR "); 
+            $query= rtrim($query, ' OR ');
             $result = mysqli_query($con, $query);
+        
+            if(mysqli_num_rows($result)==0){
+                $query = "SELECT * FROM anuncios WHERE ";
+                foreach ($palavras_busca as $palavra) {
+                $query .= "LEVENSHTEIN_CONTAINS('$palavra', titulo_anuncio, ".strlen($palavra)/3 .") OR ";
+                }
+                $query = rtrim($query, "OR "); 
+                $result = mysqli_query($con, $query);
+            }
         }
     } 
 

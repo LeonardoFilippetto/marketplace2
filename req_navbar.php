@@ -4,11 +4,11 @@
         <div class="container-fluid">
             <a class="navbar-brand ms-3" href="index.php" id="logo_nav">STOCKPC</a>
             <form action="index.php" method="post" id="frm_busca" autocomplete="off" class="d-none d-md-block">
-                    <div class="search-container">
-                        <input type="text" placeholder="Buscar" name="search" id="busca">
-                        <img src="img/procurar.svg" alt="" style="height:1rem; margin:0.2rem;" id="lupa">
-                    </div>
-                </form>
+                <div class="search-container">
+                    <input type="text" placeholder="Buscar" name="search" id="busca">
+                    <img src="img/procurar.svg" alt="" style="height:1rem; margin:0.2rem;" id="lupa">
+                </div>
+            </form>
                
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
