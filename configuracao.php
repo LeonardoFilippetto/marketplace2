@@ -1,10 +1,20 @@
 <?php
     require "req_funcoes_configuracao.php";
+    require "conexao.php";
+    session_start();
+    $vetor_etapas=['processador', 'placa_mae', 'ram', 'placa_video', 'armazenamento', 'gabinete', 'fonte', 'perifericos', 'revisao'];
     $etapa="processador";
-    if(isset($_POST['etapa']))
-        $etapa=$_POST['etapa'];
-    
-    
+
+    if(isset($_POST['proxima_etapa'])){
+        $etapa=$_POST['proxima_etapa'];
+            
+        if(!isset($_SESSION['config']))
+            $_SESSION['config']=[];
+
+        $_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]]['id_anuncio']=[$_POST['id_anuncio']];
+        
+    }
+
     $titulo_etapa=retorna_titulo($etapa);
     
     if(isset($_POST['search'])){
@@ -52,6 +62,7 @@
     rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script defer src="https://kit.fontawesome.com/0e01c81990.js" crossorigin="anonymous"></script>
+    <script src="js/index.js" defer></script>
     <script src="js/busca.js" defer></script>
     <script src="js/configuracao.js" defer></script>
     <?php
@@ -130,9 +141,47 @@
                 </form>
 
             </div>
+<?php
+    if(!isset($query)){ 
+        $query = "SELECT * FROM anuncios WHERE categoria_produto='$etapa'";
+        $result = mysqli_query($con, $query);
+    }
+
+    echo "<div id='grid'>";
+    if(mysqli_num_rows($result)!=0){
+        while ($row = mysqli_fetch_array($result)) {
+            $id_anunc=($row['id_anuncio']);
+            $id_vend=($row['id_vendedor']);
+            $nome_prod=($row['titulo_anuncio']);
+            //$tipo=($row['tipo_prod']);
+            $preco=($row['preco']);
+            $img_princ=($row['img_princ']);
+            /*echo $id_anunc."<br>";
+            echo $id_vend."<br>";
+            echo $nome_prod."<br>";
+            echo $tipo."<br>";
+            echo $preco."<br>";
+            echo "<img src='img/".$img_princ."' width='200px'><br><br>";*/
+
+            echo"<div class='anuncio' id='".$id_anunc."' onclick='pagAnunc(event)'>
+                <input type='checkbox' id='check_".$id_anunc."' onchange='selecionarPeca(this)'>
+                <div class='img_anunc'>
+                    <img src='img/".$img_princ."' >
+                </div>
+                <span class='titulo_anunc'>$nome_prod</span>
+                <span class='preco'>R$ ".$preco."</span>
+            </div>";
+        }
+    }
+    echo"</div>";
+?>
         </div>
         <div id="info">
-            
+            <form action="" method="post">
+                <input type="hidden" name="proxima_etapa" id="input_proxima_etapa" value="<?php echo $vetor_etapas[(array_search($etapa, $vetor_etapas)+1)]; ?>">
+                <input type="hidden" name="id_anuncio" id="input_id_anuncio" value="">
+                <input type="submit" id="submit_avancar" value="SELECIONE UM PRODUTO" disabled>
+            </form>
         </div>
     </div>
 
