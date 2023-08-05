@@ -5,45 +5,76 @@
     $vetor_etapas=['processador', 'placa_mae', 'ram', 'placa_video', 'armazenamento', 'gabinete', 'fonte', 'perifericos', 'revisao'];
     $etapa="processador";
 
-    if(isset($_POST['proxima_etapa'])){
-        $etapa=$_POST['proxima_etapa'];
-            
-        if(!isset($_SESSION['config']))
+
+    if(!isset($_SESSION['config']))
             $_SESSION['config']=[];
 
-        $_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]]['id_anuncio']=[$_POST['id_anuncio']];
+    if(isset($_POST['proxima_etapa'])){
+
+        $etapa=$_POST['proxima_etapa'];
+
+        if(isset($_POST['quant_anunc'])){
+
+
+
+
+            for($i=0;$i<$_POST['quant_anunc'];$i++){
+                $indice_id="id_anuncio_".$i;
+                $indice_quantidade="quantidade_".$i;
+
+                $query_produto="SELECT produtos.* FROM produtos WHERE id_anuncio='".$_POST[$indice_id]."' LIMIT 1";
+                $result_produto = mysqli_query($con, $query_produto);
+                $row_produto = mysqli_fetch_array($result_produto);
+
+                
+                $_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][$i]['id_anuncio']=$_POST[$indice_id];
+                $_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][$i]['quantidade']=$_POST[$indice_quantidade];
+                $_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][$i]['produto']=$row_produto;
+            }
+        }    
         
     }
 
-    $titulo_etapa=retorna_titulo($etapa);
+    
+    //IMPLEMENTAR
+    $query_peca=retorna_query($etapa, $_SESSION['config']);
+    //IMPLEMENTAR
     
     if(isset($_POST['search'])){
         $termo_busca=strtolower($_POST['search']);
-        $query="SELECT * FROM anuncios WHERE LOWER(titulo_anuncio) LIKE'%$termo_busca%'";
-        $result = mysqli_query($con, $query);
+        $query_busca=" AND (LOWER(titulo_anuncio) LIKE'%$termo_busca%')";
+        $result = mysqli_query($con, $query_peca.$query_busca);
         if(mysqli_num_rows($result)==0){
-            $query = "SELECT * FROM anuncios WHERE LEVENSHTEIN_CONTAINS('$termo_busca', titulo_anuncio, ".strlen($termo_busca)/7 .")";
-            $result = mysqli_query($con, $query);
+            $query_busca = " AND (LEVENSHTEIN_CONTAINS('$termo_busca', titulo_anuncio, ".strlen($termo_busca)/7 ."))";
+            $result = mysqli_query($con, $query_peca.$query_busca);
             if(mysqli_num_rows($result)==0){
                 $palavras_busca=explode(' ', $termo_busca);
-                $query="SELECT * FROM anuncios WHERE ";
+                $query_busca=" AND (";
                 foreach($palavras_busca as $palavra){
-                    $query.="LOWER(titulo_anuncio) LIKE'%$palavra%' OR ";
+                    $query_busca.="LOWER(titulo_anuncio) LIKE'%$palavra%' OR ";
                 }
-                $query= rtrim($query, ' OR ');
-                $result = mysqli_query($con, $query);
+                $query_busca= rtrim($query_busca, ' OR ');
+                $result = mysqli_query($con, $query_peca.$query_busca.")");
             
                 if(mysqli_num_rows($result)==0){
-                    $query = "SELECT * FROM anuncios WHERE ";
-                    foreach ($palavras_busca as $palavra) {
-                    $query .= "LEVENSHTEIN_CONTAINS('$palavra', titulo_anuncio, ".strlen($palavra)/3 .") OR ";
+                    $query_busca = " AND (";
+                    foreach($palavras_busca as $palavra) {
+                        $query_busca.= "LEVENSHTEIN_CONTAINS('$palavra', titulo_anuncio, ".strlen($palavra)/3 .") OR ";
                     }
-                    $query = rtrim($query, "OR "); 
-                    $result = mysqli_query($con, $query);
+                    $query_busca = rtrim($query, "OR "); 
+                    $result = mysqli_query($con, $query_peca.$query_busca.")");
                 }
             }
         } 
-    }   
+    }else{
+        $result = mysqli_query($con, $query_peca);
+    }
+
+
+
+    $titulo_etapa=retorna_titulo($etapa);
+    
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,7 +158,7 @@
             <div id="cabecalho">
                 <?php if($etapa!="processador"){ ?>
                     <form action="" method="post">
-                        <?php echo $input_voltar; ?>
+                        <?php// echo $input_voltar; ?>
                         <button>Voltar</button>
                     </form>
                 <?php } echo $titulo_etapa;?>
@@ -142,10 +173,6 @@
 
             </div>
 <?php
-    if(!isset($query)){ 
-        $query = "SELECT * FROM anuncios WHERE categoria_produto='$etapa'";
-        $result = mysqli_query($con, $query);
-    }
 
     echo "<div id='grid'>";
     if(mysqli_num_rows($result)!=0){
@@ -179,7 +206,10 @@
         <div id="info">
             <form action="" method="post">
                 <input type="hidden" name="proxima_etapa" id="input_proxima_etapa" value="<?php echo $vetor_etapas[(array_search($etapa, $vetor_etapas)+1)]; ?>">
-                <input type="hidden" name="id_anuncio" id="input_id_anuncio" value="">
+                <input type="hidden" name="quant_anunc" id="quant_anunc" value="1">
+
+                <input type="hidden" name="id_anuncio_0" id="input_id_anuncio_0" value="">
+                <input type="hidden" name="quantidade_0" id="quantidade_0" value="1">
                 <input type="submit" id="submit_avancar" value="SELECIONE UM PRODUTO" disabled>
             </form>
         </div>

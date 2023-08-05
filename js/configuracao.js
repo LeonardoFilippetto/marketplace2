@@ -1,6 +1,6 @@
 function selecionarPeca(checkbox){
     if(checkbox.checked){
-        document.querySelector("#input_id_anuncio").value=checkbox.id.replace("check_", "");
+        document.querySelector("#input_id_anuncio_0").value=checkbox.id.replace("check_", "");
         document.querySelectorAll("input[type='checkbox']").forEach(checkboxInput =>{
             checkboxInput.checked=false;
         })

@@ -274,7 +274,7 @@ $form_armazenamento='
 <label for="barramento">Barramento de encaixe:*</label>
 <select name="barramento" id="barramento" required>
     <option value="">Selecione uma opção</option>
-    <option value="pcie">NVMe</option>
+    <option value="nvme">NVMe</option>
     <option value="sata">SATA</option>
     <option value="pata">PATA</option>
 </select>
