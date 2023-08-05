@@ -206,6 +206,7 @@
         <div id="info">
             <form action="" method="post">
                 <input type="hidden" name="proxima_etapa" id="input_proxima_etapa" value="<?php echo $vetor_etapas[(array_search($etapa, $vetor_etapas)+1)]; ?>">
+                <input type="hidden" name="max_quant_anunc" id="max_quant_anunc" value="1">
                 <input type="hidden" name="quant_anunc" id="quant_anunc" value="1">
 
                 <input type="hidden" name="id_anuncio_0" id="input_id_anuncio_0" value="">

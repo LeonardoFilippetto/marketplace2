@@ -28,6 +28,7 @@
         }
 
         if($etapa=="armazenamento"){
+            $barramentos_armazenamento="";
             if ($vetor_config['placa_mae'][0]['produto']['suporta_sata']==1)
                 $barramentos_armazenamento.="produtos.barramento_encaixe_armazenamento='sata' OR ";
             
@@ -41,13 +42,13 @@
 
         if($etapa=="gabinete"){
             if($vetor_config['placa_mae'][0]['produto']['fator_forma']=="eatx"){
-                $fator_forma="AND produto.fator_forma='eatx'";
+                $fator_forma="AND  produtos.fator_forma='eatx'";
             }else if($vetor_config['placa_mae'][0]['produto']['fator_forma']=="atx"){
-                $fator_forma="AND (produto.fator_forma='eatx' OR produto.fator_forma='atx')";
+                $fator_forma="AND ( produtos.fator_forma='eatx' OR  produtos.fator_forma='atx')";
             }else if($vetor_config['placa_mae'][0]['produto']['fator_forma']=="mini"){
-                $fator_forma="AND (produto.fator_forma='eatx' OR produto.fator_forma='atx' OR produto.fator_forma='mini')";
+                $fator_forma="AND ( produtos.fator_forma='eatx' OR  produtos.fator_forma='atx' OR  produtos.fator_forma='mini')";
             }else if($vetor_config['placa_mae'][0]['produto']['fator_forma']=="atx"){
-                $fator_forma="AND (produto.fator_forma='eatx' OR produto.fator_forma='atx' OR produto.fator_forma='mini' OR produto.fator_forma='micro')";
+                $fator_forma="AND ( produtos.fator_forma='eatx' OR  produtos.fator_forma='atx' OR  produtos.fator_forma='mini' OR  produtos.fator_forma='micro')";
             }
             return "SELECT anuncios.*, produtos.fator_forma AS fator_forma FROM anuncios INNER JOIN produtos ON produtos.id_produto=anuncios.id_produto WHERE anuncios.categoria_produto='$etapa' ".$fator_forma;
         }
@@ -57,15 +58,16 @@
         }
 
         if($etapa=="ram"){
-            return "SELECT anuncios.*, produtos.quantidade_pentes AS quantidade_pentes, produtos.ram_total AS ram_total, produtos.tipo_ram AS tipo_ram, FROM anuncios INNER JOIN produtos ON produtos.id_produto=anuncios.id_produto WHERE anuncios.categoria_produto='$etapa' AND produtos.quantidade_pentes<=".$vetor_config['placa_mae'][0]['produto']['barramentos_ram']." AND produtos.ram_total<=".$vetor_config['placa_mae'][0]['produto']['max_ram']." AND produtos.tipo_ram='".$vetor_config['placa_mae'][0]['produto']['tipo_ram']."'";
+            return "SELECT anuncios.*, produtos.quantidade_pentes AS quantidade_pentes, produtos.ram_total AS ram_total, produtos.tipo_ram AS tipo_ram FROM anuncios INNER JOIN produtos ON produtos.id_produto=anuncios.id_produto WHERE anuncios.categoria_produto='$etapa' AND produtos.quantidade_pentes<=".$vetor_config['placa_mae'][0]['produto']['barramentos_ram']." AND produtos.ram_total<=".$vetor_config['placa_mae'][0]['produto']['max_ram']." AND produtos.tipo_ram='".$vetor_config['placa_mae'][0]['produto']['tipo_ram']."'";
         }
 
         if($etapa=="placa_mae"){
-            return "SELECT anuncios.*, produtos.fab_comp AS fab_comp, produtos.soquete AS soquete, FROM anuncios INNER JOIN produtos ON produtos.id_produto=anuncios.id_produto WHERE anuncios.categoria_produto='$etapa' AND LOWER(produtos.fab_comp)=LOWER('".$vetor_config['processador'][0]['produto']['fabricante']."') AND LOWER(produtos.soquete)=LOWER('".$vetor_config['processador'][0]['produto']['soquete']."')";
+            return "SELECT anuncios.*, produtos.fab_comp AS fab_comp, produtos.soquete AS soquete FROM anuncios INNER JOIN produtos ON produtos.id_produto=anuncios.id_produto WHERE anuncios.categoria_produto='$etapa' AND LOWER(produtos.fab_comp)=LOWER('".$vetor_config['processador'][0]['produto']['fabricante']."') AND LOWER(produtos.soquete)=LOWER('".$vetor_config['processador'][0]['produto']['soquete']."')";
         }
 
         if($etapa=="placa_video"){
             $vetor_barramentos=explode(',', $vetor_config['placa_mae'][0]['produto']['barramentos_video']);
+            $verificacao_barramentos="";
             foreach($vetor_barramentos as $barramento){
                 $verificacao_barramentos.= "LOWER(produtos.barramento_encaixe_video) LIKE LOWER('%".$barramento."%') OR ";
             }
