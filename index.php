@@ -117,7 +117,7 @@ if(isset($_POST['search'])){
                     <img src='img/".$img_princ."' >
                 </div>
                 <span class='titulo_anunc'>$nome_prod</span>
-                <span class='preco'>R$ ".$preco."</span>
+                <span class='preco'>R$ ".number_format($preco, 2, ',', '.')."</span>
                 <form id='form_carrinho' method='post' action='precarrinho.php'>
                     <input type='hidden' value='".$id_anunc."' name='id_anunc'>
                     <button class='btn_anunc'>COMPRAR</button>

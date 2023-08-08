@@ -69,7 +69,7 @@ if(isset($_POST['excl'])){
                         <img src='img/".$img_princ."' >
                     </div>
                     <span class='titulo_anunc'>$nome_prod</span>
-                    <span class='preco'>R$ ".$preco."</span>
+                    <span class='preco'>R$ ".number_format($preco, 2, ',', '.')."</span>
                     <form method='post' id='excluir' action='meus_anuncios.php'>
                         <input type='hidden' name='excl' value='".$id_anunc."'>
                         <input type='submit' value='EXCLUIR' class='btn_excluir' onclick='return confirm("."Tem certeza que quer excluir o anúncio?".");'>

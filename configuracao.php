@@ -15,9 +15,6 @@
 
         if(isset($_POST['quant_anunc'])){
 
-
-
-
             for($i=0;$i<$_POST['quant_anunc'];$i++){
                 $indice_id="id_anuncio_".$i;
                 $indice_quantidade="quantidade_".$i;
@@ -29,12 +26,19 @@
                 
                 $_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][$i]['id_anuncio']=$_POST[$indice_id];
                 $_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][$i]['quantidade']=$_POST[$indice_quantidade];
+                $_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][$i]['preco']=$_POST[$indice_quantidade];
                 $_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][$i]['produto']=$row_produto;
             }
         }    
-        
     }
-
+    $subtotal=0;
+    if($_SESSION['config']!=[]){
+        foreach($_SESSION['config'] as $etapa_config){
+            foreach($etapa_config as $vetor_anuncio){
+                $subtotal+=$vetor_anuncio['preco'];
+            }
+        }
+    }
     
     //IMPLEMENTAR
     $query_peca=retorna_query($etapa, $_SESSION['config']);
@@ -196,7 +200,7 @@
                     <img src='img/".$img_princ."' >
                 </div>
                 <span class='titulo_anunc'>$nome_prod</span>
-                <span class='preco'>R$ ".$preco."</span>
+                <span class='preco'>R$ ".number_format($preco, 2, ',', '.')."</span>
             </div>";
         }
     }
@@ -208,11 +212,14 @@
                 <input type="hidden" name="proxima_etapa" id="input_proxima_etapa" value="<?php echo $vetor_etapas[(array_search($etapa, $vetor_etapas)+1)]; ?>">
                 <input type="hidden" name="max_quant_anunc" id="max_quant_anunc" value="1">
                 <input type="hidden" name="quant_anunc" id="quant_anunc" value="1">
+                <input type="hidden" name="preco_anunc" id="preco_anunc" value="0">
 
                 <input type="hidden" name="id_anuncio_0" id="input_id_anuncio_0" value="">
                 <input type="hidden" name="quantidade_0" id="quantidade_0" value="1">
                 <input type="submit" id="submit_avancar" value="SELECIONE UM PRODUTO" disabled>
             </form>
+
+            <div><p class="aux">Subtotal:</p><p id="subtotal">R$<?php echo number_format($subtotal, 2, ',', '.'); ?></p><p class="aux">(Frete não incluído)</p></div>
         </div>
     </div>
 
