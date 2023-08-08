@@ -69,7 +69,7 @@ if(isset($_POST['search'])){
             <img src="img/banner02.png" alt="" class="banner_img">
         </div>
         
-        <!-- Controles de navegação -->
+      
         <a href="#" class="carousel-prev"><i class="fa-solid fa-chevron-right fa-rotate-180 fa-lg" style="color: #ffffff;"></i></a>
         <a href="#" class="carousel-next"><i class="fa-solid fa-chevron-right fa-lg" style="color: #ffffff;"></i></a>
     </div>
