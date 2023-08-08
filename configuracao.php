@@ -162,7 +162,7 @@
             <div id="cabecalho">
                 <?php if($etapa!="processador"){ ?>
                     <form action="" method="post">
-                        <?php// echo $input_voltar; ?>
+                        <?php // echo $input_voltar; ?>
                         <button>Voltar</button>
                     </form>
                 <?php } echo $titulo_etapa;?>
@@ -200,7 +200,7 @@
                     <img src='img/".$img_princ."' >
                 </div>
                 <span class='titulo_anunc'>$nome_prod</span>
-                <span class='preco'>R$ ".number_format($preco, 2, ',', '.')."</span>
+                <span id='preco_".$id_anunc."' class='preco'>R$ ".number_format($preco, 2, ',', '.')."</span>
             </div>";
         }
     }
