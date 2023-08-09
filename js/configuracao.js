@@ -9,10 +9,9 @@ function selecionarPeca(checkbox){
             checkbox.checked=true;
             document.querySelector("#submit_avancar").value="AVANÇAR"
 
-            let indiceAnuncio = checkbox.id.replace("check", "preco")
-
-            document.querySelector("#preco_anunc").value=stringNumero(document.querySelector(indiceAnuncio).value)
-            document.querySelector("#subtotal").value=numeroString(stringNumero(document.querySelector("#subtotal").value)+stringNumero(document.querySelector(indiceAnuncio).value))
+            let indiceAnuncio = '#'+checkbox.id.replace("check", "preco")
+            document.querySelector("#preco_anunc_0").value=stringNumero(document.querySelector(indiceAnuncio).innerHTML)
+            document.querySelector("#subtotal").innerHTML=numeroString(stringNumero(document.querySelector("#subtotal").innerHTML)+stringNumero(document.querySelector(indiceAnuncio).innerHTML))
 
         }
 
@@ -21,16 +20,29 @@ function selecionarPeca(checkbox){
         if(maxQuant==1){
             document.querySelector("#input_id_anuncio_0").value=""
             document.querySelector("#submit_avancar").value="SELECIONE UM PRODUTO"
+            
+            let indiceAnuncio = '#'+checkbox.id.replace("check", "preco")
+            document.querySelector("#preco_anunc_0").value-=stringNumero(document.querySelector(indiceAnuncio).innerHTML)
+            document.querySelector("#subtotal").innerHTML=numeroString(stringNumero(document.querySelector("#subtotal").innerHTML)-stringNumero(document.querySelector(indiceAnuncio).innerHTML))
+
         }
     }
     document.querySelector("#submit_avancar").disabled=!checkbox.checked
 }
 
 function numeroString(n){
+    let formattedNumber = n.toLocaleString('en-US', {
+        style: 'decimal',
+        useGrouping: true,
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
     
+    return "R$"+formattedNumber.replace(/\./g, ';').replace(/,/g, '.').replace(/;/g, ',');
 }
 
 function stringNumero(s){
-    s = text.replace(/./g, "")
-    return parseFloat(text.replace(/,/g, "."))   
+    s = s.replace(/R\$/g, "").trim()
+    s = s.replace(/\./g, "")
+    return parseFloat(s.replace(/,/g, "."))   
 }

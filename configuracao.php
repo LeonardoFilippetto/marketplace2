@@ -6,6 +6,7 @@
     $etapa="processador";
 
 
+    $subtotal=0;
     if(!isset($_SESSION['config']))
             $_SESSION['config']=[];
 
@@ -18,6 +19,7 @@
             for($i=0;$i<$_POST['quant_anunc'];$i++){
                 $indice_id="id_anuncio_".$i;
                 $indice_quantidade="quantidade_".$i;
+                $indice_preco="preco_anunc_".$i;
 
                 $query_produto="SELECT produtos.* FROM produtos WHERE id_anuncio='".$_POST[$indice_id]."' LIMIT 1";
                 $result_produto = mysqli_query($con, $query_produto);
@@ -26,23 +28,25 @@
                 
                 $_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][$i]['id_anuncio']=$_POST[$indice_id];
                 $_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][$i]['quantidade']=$_POST[$indice_quantidade];
-                $_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][$i]['preco']=$_POST[$indice_quantidade];
+                $_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][$i]['preco']=$_POST[$indice_preco];
                 $_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][$i]['produto']=$row_produto;
             }
-        }    
-    }
-    $subtotal=0;
-    if($_SESSION['config']!=[]){
-        foreach($_SESSION['config'] as $etapa_config){
-            foreach($etapa_config as $vetor_anuncio){
-                $subtotal+=$vetor_anuncio['preco'];
+            foreach($_SESSION['config'] as $etapa_config){
+                foreach($etapa_config as $vetor_anuncio){
+                    $subtotal+=$vetor_anuncio['preco']*$vetor_anuncio['quantidade'];
+                }
+                
             }
-        }
+        } 
+        $query_peca=retorna_query($etapa, $_SESSION['config']);   
+    }else{
+        unset($_SESSION['config']);
+        $query_peca=retorna_query($etapa, '');
     }
     
-    //IMPLEMENTAR
-    $query_peca=retorna_query($etapa, $_SESSION['config']);
-    //IMPLEMENTAR
+    
+    
+    //$query_peca=retorna_query($etapa, $_SESSION['config']);
     
     if(isset($_POST['search'])){
         $termo_busca=strtolower($_POST['search']);
@@ -212,10 +216,10 @@
                 <input type="hidden" name="proxima_etapa" id="input_proxima_etapa" value="<?php echo $vetor_etapas[(array_search($etapa, $vetor_etapas)+1)]; ?>">
                 <input type="hidden" name="max_quant_anunc" id="max_quant_anunc" value="1">
                 <input type="hidden" name="quant_anunc" id="quant_anunc" value="1">
-                <input type="hidden" name="preco_anunc" id="preco_anunc" value="0">
 
                 <input type="hidden" name="id_anuncio_0" id="input_id_anuncio_0" value="">
                 <input type="hidden" name="quantidade_0" id="quantidade_0" value="1">
+                <input type="hidden" name="preco_anunc_0" id="preco_anunc_0" value="0">
                 <input type="submit" id="submit_avancar" value="SELECIONE UM PRODUTO" disabled>
             </form>
 
