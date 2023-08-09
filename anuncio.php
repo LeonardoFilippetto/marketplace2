@@ -1,4 +1,4 @@
-<?php
+    <?php
 session_start();
 if(!isset($_GET['id_anunc']))
     header("Location:index.php");
@@ -100,8 +100,8 @@ else{
                 </div>
                 <div id="frete">
                     <?php if(!isset($_SESSION['id_usuario'])){?>
-                        <label for="cep">Insira o CEP para calcular frete e prazo de entrega:</label><br>
-                        <input type="number" onKeyPress="if(this.value.length==8) return false;" id="cep" name="cep" placeholder="12345678" > <button id="frete">OK</button> 
+                        <label for="cep"><strong>Insira o CEP para calcular frete e prazo de entrega:</strong></label><br>
+                        <input type="number" onKeyPress="if(this.value.length==8) return false;" id="cep" name="cep" placeholder="Inserir CEP" > <button id="btn_frete">OK</button> 
                     <?php } else{?>
                         <p>**frete** **endereço** **alterar endereço**</p>
                     <?php } ?>
