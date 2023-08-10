@@ -4,7 +4,7 @@
     session_start();
     $vetor_etapas=['processador', 'placa_mae', 'ram', 'placa_video', 'armazenamento', 'gabinete', 'fonte', 'perifericos', 'revisao'];
     $etapa="processador";
-
+    $quant_anunc=1;
 
     $subtotal=0;
     if(!isset($_SESSION['config']))
@@ -38,7 +38,10 @@
                 
             }
         } 
-        $query_peca=retorna_query($etapa, $_SESSION['config']);   
+        $query_peca=retorna_query(-$etapa, $_SESSION['config']);
+        if($etapa=='ram'){
+            $max_quant_anunc=$_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][0]['produto']['barramentos_ram'];
+        }
     }else{
         unset($_SESSION['config']);
         $query_peca=retorna_query($etapa, '');
@@ -100,10 +103,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" 
     rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script defer src="https://kit.fontawesome.com/0e01c81990.js" crossorigin="anonymous"></script>
-    <script src="js/index.js" defer></script>
-    <script src="js/busca.js" defer></script>
-    <script src="js/configuracao.js" defer></script>
+    <script src="js/configuracao.js" async></script>
+    <script async src="https://kit.fontawesome.com/0e01c81990.js" crossorigin="anonymous"></script>
+    <script src="js/index.js" async></script>
+    <script src="js/busca.js" async></script>
     <?php
         require "req_scripts.php";
     ?>
@@ -214,7 +217,7 @@
         <div id="info">
             <form action="" method="post">
                 <input type="hidden" name="proxima_etapa" id="input_proxima_etapa" value="<?php echo $vetor_etapas[(array_search($etapa, $vetor_etapas)+1)]; ?>">
-                <input type="hidden" name="max_quant_anunc" id="max_quant_anunc" value="1">
+                <input type="hidden" name="max_quant_anunc" id="max_quant_anunc" value="<?php echo $quant_anunc; ?>">
                 <input type="hidden" name="quant_anunc" id="quant_anunc" value="1">
 
                 <input type="hidden" name="id_anuncio_0" id="input_id_anuncio_0" value="">

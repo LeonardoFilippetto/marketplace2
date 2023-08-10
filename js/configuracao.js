@@ -13,6 +13,8 @@ function selecionarPeca(checkbox){
             document.querySelector("#preco_anunc_0").value=stringNumero(document.querySelector(indiceAnuncio).innerHTML)
             document.querySelector("#subtotal").innerHTML=numeroString(stringNumero(document.querySelector("#subtotal").innerHTML)+stringNumero(document.querySelector(indiceAnuncio).innerHTML))
 
+        }else{
+            
         }
 
         
