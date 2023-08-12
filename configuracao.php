@@ -4,7 +4,7 @@
     session_start();
     $vetor_etapas=['processador', 'placa_mae', 'ram', 'placa_video', 'armazenamento', 'gabinete', 'fonte', 'perifericos', 'revisao'];
     $etapa="processador";
-    $quant_anunc=1;
+    $max_quant_anunc=1;
 
     $subtotal=0;
     if(!isset($_SESSION['config']))
@@ -38,7 +38,7 @@
                 
             }
         } 
-        $query_peca=retorna_query(-$etapa, $_SESSION['config']);
+        $query_peca=retorna_query($etapa, $_SESSION['config']);
         if($etapa=='ram'){
             $max_quant_anunc=$_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][0]['produto']['barramentos_ram'];
         }
@@ -217,8 +217,8 @@
         <div id="info">
             <form action="" method="post">
                 <input type="hidden" name="proxima_etapa" id="input_proxima_etapa" value="<?php echo $vetor_etapas[(array_search($etapa, $vetor_etapas)+1)]; ?>">
-                <input type="hidden" name="max_quant_anunc" id="max_quant_anunc" value="<?php echo $quant_anunc; ?>">
-                <input type="hidden" name="quant_anunc" id="quant_anunc" value="1">
+                <input type="hidden" name="max_quant_anunc" id="max_quant_anunc" value="<?php echo $max_quant_anunc; ?>">
+                <input type="hidden" name="quant_anunc" id="quant_anunc" value="0">
 
                 <input type="hidden" name="id_anuncio_0" id="input_id_anuncio_0" value="">
                 <input type="hidden" name="quantidade_0" id="quantidade_0" value="1">
@@ -226,7 +226,7 @@
                 <input type="submit" id="submit_avancar" value="SELECIONE UM PRODUTO" disabled>
             </form>
 
-            <div><p class="aux">Subtotal:</p><p id="subtotal">R$<?php echo number_format($subtotal, 2, ',', '.'); ?></p><p class="aux">(Frete não incluído)</p></div>
+            <div><br><br><p class="aux">Subtotal:</p><p id="subtotal">R$<?php echo number_format($subtotal, 2, ',', '.'); ?></p><p class="aux">(Frete não incluído)</p></div>
         </div>
     </div>
 
