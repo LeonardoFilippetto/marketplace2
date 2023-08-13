@@ -38,6 +38,7 @@
                 
             }
         } 
+        $_SESSION['subtotal']=$subtotal;
         $query_peca=retorna_query($etapa, $_SESSION['config']);
         if($etapa=='ram'){
             $max_quant_anunc=$_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][0]['produto']['barramentos_ram'];
@@ -215,7 +216,7 @@
 ?>
         </div>
         <div id="info">
-            <form action="" method="post">
+            <form action="" method="post" id="prox_et">
                 <input type="hidden" name="proxima_etapa" id="input_proxima_etapa" value="<?php echo $vetor_etapas[(array_search($etapa, $vetor_etapas)+1)]; ?>">
                 <input type="hidden" name="max_quant_anunc" id="max_quant_anunc" value="<?php echo $max_quant_anunc; ?>">
                 <input type="hidden" name="quant_anunc" id="quant_anunc" value="0">

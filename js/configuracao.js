@@ -4,6 +4,7 @@ function selecionarPeca(checkbox){
     if(checkbox.checked){
         if(maxQuant==1||quantAnunc==0){
             document.querySelector("#input_id_anuncio_0").value=checkbox.id.replace("check_", "")
+            document.querySelector("#input_id_anuncio_0").id="input_id_anuncio_"+checkbox.id.replace("check_", "")
             document.querySelectorAll("input[type='checkbox']").forEach(checkboxInput =>{
                 checkboxInput.checked=false;
             })
@@ -12,9 +13,12 @@ function selecionarPeca(checkbox){
 
             let indicePrecoAnuncio = '#'+checkbox.id.replace("check", "preco")
             document.querySelector("#preco_anunc_0").value=stringNumero(document.querySelector(indicePrecoAnuncio).innerHTML)
-            document.querySelector("#subtotal").innerHTML=numeroString(stringNumero(document.querySelector("#subtotal").innerHTML)+stringNumero(document.querySelector(indicePrecoAnuncio).innerHTML))
+            document.querySelector("#subtotal").innerHTML=numeroString(sessionStorage.getItem('subtotal')+stringNumero(document.querySelector(indicePrecoAnuncio).innerHTML))
             document.querySelector("#submit_avancar").disabled=!checkbox.checked
             document.querySelector("#quant_anunc").value=1
+            document.querySelector("#preco_anunc_0").id="#preco_anunc_"+checkbox.id.replace("check_", "")
+            document.querySelector("#quantidade_0").id="#preco_anunc_"+checkbox.id.replace("check_", "")
+
         }else{
             if(quantAnunc==maxQuant){
                 checkbox.checked=false
@@ -22,11 +26,11 @@ function selecionarPeca(checkbox){
             }else{
                 document.querySelector("#quant_anunc").value=quantAnunc+1
                 quantAnunc=quantAnunc+1
-                criarInputs(quantAnunc)
-                document.querySelector("#input_id_anuncio_"+quantAnunc).value=checkbox.id.replace("check_", "")
+                criarInputs(quantAnunc, checkbox.id.replace("check_", ""), "#prox_et")
+                document.querySelector("#input_id_anuncio_"+checkbox.id.replace("check_", "")).value=checkbox.id.replace("check_", "")
 
                 let indicePrecoAnuncio = '#'+checkbox.id.replace("check", "preco")
-                document.querySelector("#preco_anunc_"+quantAnunc).value=stringNumero(document.querySelector(indicePrecoAnuncio).innerHTML)
+                document.querySelector("#preco_anunc_"+checkbox.id.replace("check_", "")).value=stringNumero(document.querySelector(indicePrecoAnuncio).innerHTML)
                 document.querySelector("#subtotal").innerHTML=numeroString(stringNumero(document.querySelector("#subtotal").innerHTML)+stringNumero(document.querySelector(indicePrecoAnuncio).innerHTML))
             }
         }
@@ -34,22 +38,27 @@ function selecionarPeca(checkbox){
         
     } else{
         if(maxQuant==1||quantAnunc==1){
-            document.querySelector("#input_id_anuncio_0").value=""
+            document.querySelector("#input_id_anuncio_"+checkbox.id.replace("check_", "")).value=""
+            document.querySelector("#input_id_anuncio_"+checkbox.id.replace("check_", "")).id="#input_id_anuncio_0"
             document.querySelector("#submit_avancar").value="SELECIONE UM PRODUTO"
             
             let indicePrecoAnuncio = '#'+checkbox.id.replace("check", "preco")
-            document.querySelector("#preco_anunc_0").value-=stringNumero(document.querySelector(indicePrecoAnuncio).innerHTML)
-            document.querySelector("#subtotal").innerHTML=numeroString(stringNumero(document.querySelector("#subtotal").innerHTML)-stringNumero(document.querySelector(indicePrecoAnuncio).innerHTML))
+            document.querySelector("#preco_anunc_"+checkbox.id.replace("check_", "")).value-=stringNumero(document.querySelector(indicePrecoAnuncio).innerHTML)
+            document.querySelector("#subtotal").innerHTML=sessionStorage.getItem('subtotal')
+
+
             document.querySelector("#submit_avancar").disabled=!checkbox.checked
             document.querySelector("#quant_anunc").value=0
+
+            document.querySelector("#preco_anunc_"+checkbox.id.replace("check_", "")).id="#preco_anunc_0"
+            document.querySelector("#quantidade_"+checkbox.id.replace("check_", "")).id="#quantidade_0"
         }else{
-            removerInputs(quantAnunc)
-            document.querySelector("#submit_avancar").value="SELECIONE UM PRODUTO"
+            removerInputs(checkbox.id.replace("check_", ""))
             
             let indicePrecoAnuncio = '#'+checkbox.id.replace("check", "preco")
-            document.querySelector("#preco_anunc_0").value-=stringNumero(document.querySelector(indicePrecoAnuncio).innerHTML)
+            
             document.querySelector("#subtotal").innerHTML=numeroString(stringNumero(document.querySelector("#subtotal").innerHTML)-stringNumero(document.querySelector(indicePrecoAnuncio).innerHTML))
-            document.querySelector("#submit_avancar").disabled=!checkbox.checked
+            
             document.querySelector("#quant_anunc").value=quantAnunc-1
         }
     }
@@ -73,33 +82,33 @@ function stringNumero(s){
     return parseFloat(s.replace(/,/g, "."))   
 }
 
-function criarInputs(n){
+function criarInputs(name, id, parentId){
     // Create the input elements
     let inputIdAnuncio = document.createElement("input");
     inputIdAnuncio.type = "hidden";
-    inputIdAnuncio.name = "id_anuncio_"+n;
-    inputIdAnuncio.id = "input_id_anuncio_"+n;
+    inputIdAnuncio.name = "id_anuncio_"+name;
+    inputIdAnuncio.id = "input_id_anuncio_"+id;
     inputIdAnuncio.value = "";
 
     let inputQuantidade = document.createElement("input");
     inputQuantidade.type = "hidden";
-    inputQuantidade.name = "quantidade_"+n;
-    inputQuantidade.id = "quantidade_"+n;
+    inputQuantidade.name = "quantidade_"+name;
+    inputQuantidade.id = "quantidade_"+id;
     inputQuantidade.value = "1";
 
     let inputPrecoAnunc = document.createElement("input");
     inputPrecoAnunc.type = "hidden";
-    inputPrecoAnunc.name = "preco_anunc_"+n;
-    inputPrecoAnunc.id = "preco_anunc_"+n;
+    inputPrecoAnunc.name = "preco_anunc_"+name;
+    inputPrecoAnunc.id = "preco_anunc_"+id;
     inputPrecoAnunc.value = "0";
 
     // Find the element with the ID "preco_anunc_0"
-    let targetElement = document.querySelector("#preco_anunc_"+(n-1));
+    let parent = document.querySelector(parentId);
 
     // Append the created input elements after the target element
-    targetElement.parentNode.insertBefore(inputIdAnuncio, targetElement.nextSibling);
-    targetElement.parentNode.insertBefore(inputQuantidade, targetElement.nextSibling);
-    targetElement.parentNode.insertBefore(inputPrecoAnunc, targetElement.nextSibling);
+    parent.appendChild(inputIdAnuncio);
+    parent.appendChild(inputQuantidade);
+    parent.appendChild(inputPrecoAnunc);
 }
 
 function removerInputs(n){
