@@ -17,7 +17,7 @@
         if(isset($_POST['quant_anunc'])){
 
             for($i=0;$i<$_POST['quant_anunc'];$i++){
-                $indice_id="id_anuncio_".$i;
+                $indice_id="input_id_anuncio_".$i;
                 $indice_quantidade="quantidade_".$i;
                 $indice_preco="preco_anunc_".$i;
 
@@ -38,7 +38,6 @@
                 
             }
         } 
-        $_SESSION['subtotal']=$subtotal;
         $query_peca=retorna_query($etapa, $_SESSION['config']);
         if($etapa=='ram'){
             $max_quant_anunc=$_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][0]['produto']['barramentos_ram'];
@@ -175,7 +174,7 @@
                     </form>
                 <?php } echo $titulo_etapa;?>
 
-                <form action="index.php" method="post" id="frm_busca" autocomplete="off" class="d-none d-md-block">
+                <form action="" method="post" id="frm_busca" autocomplete="off" class="d-none d-md-block">
                     <div class="search-container">
                         <input type="text" placeholder="Buscar" name="search" id="busca">
                         <input type="hidden" name="etapa" value="<?php echo $etapa; ?>">
@@ -217,13 +216,15 @@
         </div>
         <div id="info">
             <form action="" method="post" id="prox_et">
+
+                <input type="hidden" name="subtotal_inicial" id="subtotal_inicial" value="R$<?php echo number_format($subtotal, 2, ',', '.'); ?>">
                 <input type="hidden" name="proxima_etapa" id="input_proxima_etapa" value="<?php echo $vetor_etapas[(array_search($etapa, $vetor_etapas)+1)]; ?>">
                 <input type="hidden" name="max_quant_anunc" id="max_quant_anunc" value="<?php echo $max_quant_anunc; ?>">
                 <input type="hidden" name="quant_anunc" id="quant_anunc" value="0">
 
-                <input type="hidden" name="id_anuncio_0" id="input_id_anuncio_0" value="">
-                <input type="hidden" name="quantidade_0" id="quantidade_0" value="1">
-                <input type="hidden" name="preco_anunc_0" id="preco_anunc_0" value="0">
+                <input type="hidden" class="id_anunc" name="id_anuncio_0" id="input_id_anuncio_0" value="">
+                <input type="hidden" class="quant_anunc" name="quantidade_0" id="quantidade_0" value="1">
+                <input type="hidden" class="preco_anunc" name="preco_anunc_0" id="preco_anunc_0" value="0">
                 <input type="submit" id="submit_avancar" value="SELECIONE UM PRODUTO" disabled>
             </form>
 

@@ -13,11 +13,11 @@ function selecionarPeca(checkbox){
 
             let indicePrecoAnuncio = '#'+checkbox.id.replace("check", "preco")
             document.querySelector("#preco_anunc_0").value=stringNumero(document.querySelector(indicePrecoAnuncio).innerHTML)
-            document.querySelector("#subtotal").innerHTML=numeroString(sessionStorage.getItem('subtotal')+stringNumero(document.querySelector(indicePrecoAnuncio).innerHTML))
+            document.querySelector("#subtotal").innerHTML=numeroString(stringNumero(document.querySelector("#subtotal_inicial").value)+stringNumero(document.querySelector(indicePrecoAnuncio).innerHTML))
             document.querySelector("#submit_avancar").disabled=!checkbox.checked
             document.querySelector("#quant_anunc").value=1
-            document.querySelector("#preco_anunc_0").id="#preco_anunc_"+checkbox.id.replace("check_", "")
-            document.querySelector("#quantidade_0").id="#preco_anunc_"+checkbox.id.replace("check_", "")
+            document.querySelector("#preco_anunc_0").id="preco_anunc_"+checkbox.id.replace("check_", "")
+            document.querySelector("#quantidade_0").id="quantidade_"+checkbox.id.replace("check_", "")
 
         }else{
             if(quantAnunc==maxQuant){
@@ -39,19 +39,20 @@ function selecionarPeca(checkbox){
     } else{
         if(maxQuant==1||quantAnunc==1){
             document.querySelector("#input_id_anuncio_"+checkbox.id.replace("check_", "")).value=""
-            document.querySelector("#input_id_anuncio_"+checkbox.id.replace("check_", "")).id="#input_id_anuncio_0"
+            document.querySelector("#input_id_anuncio_"+checkbox.id.replace("check_", "")).id="input_id_anuncio_0"
             document.querySelector("#submit_avancar").value="SELECIONE UM PRODUTO"
             
             let indicePrecoAnuncio = '#'+checkbox.id.replace("check", "preco")
             document.querySelector("#preco_anunc_"+checkbox.id.replace("check_", "")).value-=stringNumero(document.querySelector(indicePrecoAnuncio).innerHTML)
-            document.querySelector("#subtotal").innerHTML=sessionStorage.getItem('subtotal')
+
+            document.querySelector("#subtotal").innerHTML=document.querySelector("#subtotal_inicial").value
 
 
             document.querySelector("#submit_avancar").disabled=!checkbox.checked
             document.querySelector("#quant_anunc").value=0
 
-            document.querySelector("#preco_anunc_"+checkbox.id.replace("check_", "")).id="#preco_anunc_0"
-            document.querySelector("#quantidade_"+checkbox.id.replace("check_", "")).id="#quantidade_0"
+            document.querySelector("#preco_anunc_"+checkbox.id.replace("check_", "")).id="preco_anunc_0"
+            document.querySelector("#quantidade_"+checkbox.id.replace("check_", "")).id="quantidade_0"
         }else{
             removerInputs(checkbox.id.replace("check_", ""))
             
@@ -62,7 +63,15 @@ function selecionarPeca(checkbox){
             document.querySelector("#quant_anunc").value=quantAnunc-1
         }
     }
-    
+    let indice = 0
+    document.querySelectorAll(".id_anunc").forEach(input=>{
+        let id=input.id.replace("input_id_anuncio_", "")
+        console.log(id)
+        input.name="preco_anunc_"+indice
+        document.querySelector("#quantidade_"+id).name="quantidade_"+indice
+        document.querySelector("#preco_anunc_"+id).name="preco_anunc_"+indice
+        indice++
+    })
 }
 
 function numeroString(n){
