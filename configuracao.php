@@ -17,7 +17,7 @@
         if(isset($_POST['quant_anunc'])){
 
             for($i=0;$i<$_POST['quant_anunc'];$i++){
-                $indice_id="input_id_anuncio_".$i;
+                $indice_id="id_anuncio_".$i;
                 $indice_quantidade="quantidade_".$i;
                 $indice_preco="preco_anunc_".$i;
 
@@ -225,7 +225,7 @@
                 <input type="hidden" class="id_anunc" name="id_anuncio_0" id="input_id_anuncio_0" value="">
                 <input type="hidden" class="quant_anunc" name="quantidade_0" id="quantidade_0" value="1">
                 <input type="hidden" class="preco_anunc" name="preco_anunc_0" id="preco_anunc_0" value="0">
-                <input type="submit" id="submit_avancar" value="SELECIONE UM PRODUTO" disabled>
+                <input type="submit" id="submit_avancar" value="SELECIONE UM PRODUTO" disabled >
             </form>
 
             <div><br><br><p class="aux">Subtotal:</p><p id="subtotal">R$<?php echo number_format($subtotal, 2, ',', '.'); ?></p><p class="aux">(Frete não incluído)</p></div>

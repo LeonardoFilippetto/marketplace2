@@ -67,7 +67,7 @@ function selecionarPeca(checkbox){
     document.querySelectorAll(".id_anunc").forEach(input=>{
         let id=input.id.replace("input_id_anuncio_", "")
         console.log(id)
-        input.name="preco_anunc_"+indice
+        input.name="id_anuncio_"+indice
         document.querySelector("#quantidade_"+id).name="quantidade_"+indice
         document.querySelector("#preco_anunc_"+id).name="preco_anunc_"+indice
         indice++
