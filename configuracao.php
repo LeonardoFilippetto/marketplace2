@@ -225,6 +225,10 @@
                 <input type="hidden" class="id_anunc" name="id_anuncio_0" id="input_id_anuncio_0" value="">
                 <input type="hidden" class="quant_anunc" name="quantidade_0" id="quantidade_0" value="1">
                 <input type="hidden" class="preco_anunc" name="preco_anunc_0" id="preco_anunc_0" value="0">
+
+                <p id='limite_slots'><span id='slots_usados'></span>/<span id='slots_totais'></span></p>
+                <p id='limite_ram'><span id='ram_usada'></span>/<span id='capacidade_ram'></span></p>
+
                 <input type="submit" id="submit_avancar" value="SELECIONE UM PRODUTO" disabled >
             </form>
 
