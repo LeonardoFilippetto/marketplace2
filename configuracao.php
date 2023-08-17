@@ -5,7 +5,7 @@
     $vetor_etapas=['processador', 'placa_mae', 'ram', 'placa_video', 'armazenamento', 'gabinete', 'fonte', 'perifericos', 'revisao'];
     $etapa="processador";
     $max_quant_anunc=1;
-
+    $restricoes_ram='';
     $subtotal=0;
     if(!isset($_SESSION['config']))
             $_SESSION['config']=[];
@@ -41,6 +41,7 @@
         $query_peca=retorna_query($etapa, $_SESSION['config']);
         if($etapa=='ram'){
             $max_quant_anunc=$_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][0]['produto']['barramentos_ram'];
+            $restricoes_ram=restricoes_ram($_SESSION['config'][$vetor_etapas[(array_search($etapa, $vetor_etapas)-1)]][0]['produto']);
         }
     }else{
         unset($_SESSION['config']);
@@ -185,7 +186,7 @@
             </div>
 <?php
 
-    echo "<div id='grid'>";
+    $etapa!="ram"?echo "<div id='grid'>":echo "<div id='lista'>";
     if(mysqli_num_rows($result)!=0){
         while ($row = mysqli_fetch_array($result)) {
             $id_anunc=($row['id_anuncio']);
@@ -194,21 +195,24 @@
             //$tipo=($row['tipo_prod']);
             $preco=($row['preco']);
             $img_princ=($row['img_princ']);
-            /*echo $id_anunc."<br>";
-            echo $id_vend."<br>";
-            echo $nome_prod."<br>";
-            echo $tipo."<br>";
-            echo $preco."<br>";
-            echo "<img src='img/".$img_princ."' width='200px'><br><br>";*/
+            
+            if($etapa=='ram'){
+                $pentes=$row['quantidade_pentes'];
+                $ram_total=$row['ram_total'];
 
-            echo"<div class='anuncio' id='".$id_anunc."' onclick='pagAnunc(event)'>
+                
+            }else{
+                echo"<div class='anuncio' id='".$id_anunc."' onclick='pagAnunc(event)'>
                 <input type='checkbox' id='check_".$id_anunc."' onchange='selecionarPeca(this)'>
                 <div class='img_anunc'>
                     <img src='img/".$img_princ."' >
                 </div>
                 <span class='titulo_anunc'>$nome_prod</span>
                 <span id='preco_".$id_anunc."' class='preco'>R$ ".number_format($preco, 2, ',', '.')."</span>
-            </div>";
+                </div>";
+            }
+
+            
         }
     }
     echo"</div>";
@@ -226,8 +230,7 @@
                 <input type="hidden" class="quant_anunc" name="quantidade_0" id="quantidade_0" value="1">
                 <input type="hidden" class="preco_anunc" name="preco_anunc_0" id="preco_anunc_0" value="0">
 
-                <p id='limite_slots'><span id='slots_usados'></span>/<span id='slots_totais'></span></p>
-                <p id='limite_ram'><span id='ram_usada'></span>/<span id='capacidade_ram'></span></p>
+                <?php echo $restricoes_ram; ?>
 
                 <input type="submit" id="submit_avancar" value="SELECIONE UM PRODUTO" disabled >
             </form>

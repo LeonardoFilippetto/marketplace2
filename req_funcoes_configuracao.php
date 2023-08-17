@@ -76,6 +76,16 @@
             return "SELECT anuncios.*, produtos.barramento_encaixe_video AS barramento_encaixe_video FROM anuncios INNER JOIN produtos ON produtos.id_produto=anuncios.id_produto WHERE anuncios.categoria_produto='$etapa' AND produtos.barramento_encaixe_video IS NOT NULL AND (".$verificacao_barramentos.")";
         }
     }
+
+
+    function restricoes_ram($vetor_placa_mae){
+
+        $slots = $vetor_placa_mae['barramentos_ram'];
+        $max_ram = $vetor_placa_mae['max_ram'];
+
+        return "<p id='limite_slots'><span id='label_slots'>Slots usados:</span><span id='slots_usados'>0</span><span id='slots_totais'>/".$slots."</span></p>
+        <p id='limite_ram'><span id='label_ram'>Limite de memória:</span><span id='ram_usada'>0GB</span><span id='capacidade_ram'>/".$max_ram."GB</span></p>";
+    }
     //EXEMPLO INNER JOIN
     // $query="SELECT usuarios.nome AS nome, usuarios.nome_fantasia AS nome_fantasia, usuarios.razao_social AS razao_social, produtos.* FROM usuarios INNER JOIN produtos ON usuarios.id_usuario=produtos.id_vendedor WHERE produtos.id_anuncio='$id_anunc'";
     // $result = mysqli_query($con, $query);
