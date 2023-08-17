@@ -186,7 +186,7 @@
             </div>
 <?php
 
-    $etapa!="ram"?echo "<div id='grid'>":echo "<div id='lista'>";
+    echo ($etapa != "ram") ? "<div id='grid'>" : "<div id='lista'>";
     if(mysqli_num_rows($result)!=0){
         while ($row = mysqli_fetch_array($result)) {
             $id_anunc=($row['id_anuncio']);
@@ -200,6 +200,14 @@
                 $pentes=$row['quantidade_pentes'];
                 $ram_total=$row['ram_total'];
 
+                echo"<div class='anuncio anuncio_lista' id='".$id_anunc."' onclick='pagAnunc(event)'>
+                <input type='checkbox' id='check_".$id_anunc."' onchange='selecionarPeca(this)'>
+                <div class='img_anunc img_anunc_lista'>
+                    <img src='img/".$img_princ."' >
+                </div>
+                <span class='titulo_anunc titulo_anunc_lista'>$nome_prod</span>
+                <span id='preco_".$id_anunc."' class='preco preco_lista'>R$ ".number_format($preco, 2, ',', '.')."</span>
+                </div>";
                 
             }else{
                 echo"<div class='anuncio' id='".$id_anunc."' onclick='pagAnunc(event)'>

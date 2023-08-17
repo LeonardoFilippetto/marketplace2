@@ -1,3 +1,3 @@
 <?php
-$con = mysqli_connect('localhost:3306','root','','marketplace');
+$con = mysqli_connect('localhost:3399','root','','marketplace');
 ?>
