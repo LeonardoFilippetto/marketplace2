@@ -61,18 +61,75 @@ nav h1{
     overflow-y: scroll;
 }
 
-.anuncio_lista{
+#lista{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
 
+.container_botoes{
+    flex: 4;
+    cursor: default;
+}
+
+.container_botoes:hover{
+    cursor: default;
+}
+
+.anuncio_lista{
+    width: 90%;
+    height: 11rem;
+    margin: 1rem; 
+    display: flex;
+    flex-direction: row;
 }
 
 .img_anunc_lista{
-
+    margin: 0 0.5rem;
+    flex: 3;
 }
 
 .titulo_anunc_lista{
-
+    flex: 5;
 }
 
 .preco_lista{
-    
+    flex: 3;
+}
+
+.btn_selecionar{
+    border-radius: 0.3rem;
+    height: 3rem;
+    width: 4rem;
+    margin: 0 1rem;
+    border: 0;  
+    cursor: pointer;
+    transition: 0.25s;
+    display: inline-block;
+}
+
+.btn_retirar{
+    background-color: #ff0000;
+    opacity: 0;
+    cursor: default;
+}
+
+.btn_retirar:hover{
+    background-color: #ff3737;
+    transform: scale(1.05);
+    cursor: default;
+}
+
+.btn_adicionar{
+    background-color: #00d200;
+}
+
+.btn_adicionar:hover{
+    background-color: #41de41;
+    transform: scale(1.05);
+}
+
+.icone{
+    height: 1rem;
 }

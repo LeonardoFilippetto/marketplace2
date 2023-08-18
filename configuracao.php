@@ -201,12 +201,12 @@
                 $ram_total=$row['ram_total'];
 
                 echo"<div class='anuncio anuncio_lista' id='".$id_anunc."' onclick='pagAnunc(event)'>
-                <input type='checkbox' id='check_".$id_anunc."' onchange='selecionarPeca(this)'>
                 <div class='img_anunc img_anunc_lista'>
                     <img src='img/".$img_princ."' >
                 </div>
                 <span class='titulo_anunc titulo_anunc_lista'>$nome_prod</span>
                 <span id='preco_".$id_anunc."' class='preco preco_lista'>R$ ".number_format($preco, 2, ',', '.')."</span>
+                <div class='container_botoes'><button disabled class='btn_selecionar btn_retirar' id='retirar_".$id_anunc."'><img class='icone' src='img/icons/menos.png'></button><button class='btn_selecionar btn_adicionar' id='adicionar_".$id_anunc."'><img class='icone' src='img/icons/mais.png'></button></div>
                 </div>";
                 
             }else{
