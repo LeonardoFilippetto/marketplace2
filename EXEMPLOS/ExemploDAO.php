@@ -1,9 +1,8 @@
 <?php
 require_once('..\bd\gerenciador_de_conexoes.php');
-require_once('ExemploDTO.php');
+require_once('***ExemploDTO***.php');
 
-class ***ExemploDAO***
-{
+class ***ExemploDAO***{
 	private $con;
 
 	function __construct()
