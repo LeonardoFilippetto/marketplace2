@@ -1,3 +1,15 @@
+<?php
+if(!isset($_GET['id_anunc']))
+    header("Location:index.php");
+	require_once('../model/AnuncioDAO.php');
+	require_once('../model/AnuncioDTO.php');
+
+	$dao = new AnuncioDAO();
+
+    $anuncio = $dao->obter($_GET['id_anunc']);
+    if($anuncio->get_ativo()==0)
+        header("Location:index.php");
+?>    
 <!DOCTYPE html>
 <html lang="en">
     <head>
