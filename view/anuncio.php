@@ -1,14 +1,25 @@
 <?php
+session_start();
 if(!isset($_GET['id_anunc']))
     header("Location:index.php");
-	require_once('../model/AnuncioDAO.php');
-	require_once('../model/AnuncioDTO.php');
 
-	$dao = new AnuncioDAO();
+require_once('../model/AnuncioDAO.php');
+require_once('../model/ProdutoDAO.php');
+require_once('../model/UsuarioDAO.php');
+require_once('../utils/Especificacoes.php');
 
-    $anuncio = $dao->obter($_GET['id_anunc']);
-    if($anuncio->get_ativo()==0)
-        header("Location:index.php");
+$dao_a = new AnuncioDAO();
+$anuncio = $dao_a->obter($_GET['id_anunc']);
+
+if($anuncio->get_ativo()==0)
+header("Location:index.php");
+
+$dao_p = new ProdutoDAO();
+$produto = $dao_p->obter($anuncio->get_id_produto());
+
+$dao_u = new UsuarioDAO();
+$usuario = $dao_u->obter($anuncio->get_id_vendedor());
+
 ?>    
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +27,7 @@ if(!isset($_GET['id_anunc']))
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?php echo $titulo; ?></title>
+        <title><?php echo $anuncio->get_titulo_anuncio(); ?></title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,15 +57,15 @@ if(!isset($_GET['id_anunc']))
             <h1><b><?php echo $titulo; ?></b></h1>
             <div id="imagens" class="secao_main">
                 <div id="imgs_secundarias">
-                <div class='img_sec'><img src='img/<?php echo $img_princ; ?>' class='img_sec'></div>
+                <div class='img_sec'><img src='img/<?php echo $anuncio->get_img_princ(); ?>' class='img_sec'></div>
                     <?php
-                        foreach($imagens_secundarias as $imagem){
+                        foreach($anuncio->get_imgs_sec() as $imagem){
                             echo"<div class='img_sec'><img src='img/$imagem' ></div>";
                         }
                     ?>
                 </div>
                 <div id="img_principal">
-                    <img src="img/<?php echo $img_princ; ?>">
+                    <img src="img/<?php echo $anuncio->get_img_princ(); ?>">
                 </div>
             </div>
 
@@ -71,9 +82,9 @@ if(!isset($_GET['id_anunc']))
                     <?php } ?>
                 </div>
                 <div id="compra">
-                    <div id="preco"><b>R$<?php echo $preco; ?></b></div>
+                    <div id="preco"><b>R$<?php echo $anuncio->get_preco(); ?></b></div>
                     <form id='form_carrinho' action='precarrinho.php'>
-                        <input type='hidden' value='<?php echo $id_anunc;?>' name='id_anunc'>
+                        <input type='hidden' value='<?php echo $anuncio->get_id_anuncio();?>' name='id_anunc'>
                         <button class='btn_anunc'>COMPRAR</button>
                     </form>
                 </div>
@@ -84,15 +95,15 @@ if(!isset($_GET['id_anunc']))
         <div id="info_secundaria">
             <div id="descricao" class="secao">
                 <h3 class='titulo_secao'><img src="img/icons/documento-de-texto.png" alt="">Descrição do produto</h3>
-                <p class='p_secao'><?php echo $descricao; ?></p>
+                <p class='p_secao'><?php echo $anuncio->get_descricao(); ?></p>
             </div>
             <div id="especific_tec" class="secao">
                 <h3 class='titulo_secao'><img src="img/icons/info.png" alt="">Especificações técnicas</h3>
-                <p class='p_secao'><?php echo $espec_tec ?></p>
+                <p class='p_secao'><?php echo Especificacoes::monta_especificacoes($produto) ?></p>
             </div>
             <div id="info_adic" class="secao">
                 <h3 class='titulo_secao'><img src="img/icons/adicionar-ficheiro.png" alt="">Informações adicionais</h3>
-                <p class='p_secao'><?php echo $informacoes ?></p>
+                <p class='p_secao'><?php echo $anuncio->get_informacoes_adicionais() ?></p>
             </div>
         </div>
 

@@ -56,7 +56,7 @@ class AnuncioDAO{
 		$a ->set_preco($row['preco']);
 		$a ->set_estoque($row['estoque']);
 		$a ->set_img_princ($row['img_princ']);
-		$a ->set_imgs_sec($row['imgs_sec']);
+		$a ->set_imgs_sec(explode(",", $row['imgs_sec']));
 		$a ->set_descricao($row['descricao']);
 		$a ->set_informacoes_adicionais($row['informacoes_adicionais']);
 		$a ->set_ativo($row['ativo']);
@@ -89,6 +89,50 @@ class AnuncioDAO{
 
 		return $lista;
 	}
+
+
+
+
+
+
+	function obter_por_titulo($busca){
+		$lista = [];
+		$busca=strtolower($busca);
+
+		$result =$this->con->query("SELECT * FROM anuncios WHERE (LOWER(titulo_anuncio) LIKE'%" . $busca . "%');");
+		if ($result->rowCount() == 0){
+			$palavras_busca=explode(' ', $busca);
+            $query="SELECT * FROM anuncios WHERE ";
+            foreach($palavras_busca as $palavra){
+                $query.="LOWER(titulo_anuncio) LIKE'%" . $palavra . "%' OR ";
+            }
+            $query= rtrim($query, ' OR ');
+			$result =$this->con->query($query);
+			if ($result->rowCount() == 0)
+				return $lista;
+		}
+		while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+			$a = new anuncio();
+			$a ->set_id_anuncio($row['id_anuncio']);
+			$a ->set_id_produto($row['id_produto']);
+			$a ->set_id_vendedor($row['id_vendedor']);
+			$a ->set_titulo_anuncio($row['titulo_anuncio']);
+			$a ->set_categoria_produto($row['categoria_produto']);
+			$a ->set_preco($row['preco']);
+			$a ->set_estoque($row['estoque']);
+			$a ->set_img_princ($row['img_princ']);
+			$a ->set_imgs_sec($row['imgs_sec']);
+			$a ->set_descricao($row['descricao']);
+			$a ->set_informacoes_adicionais($row['informacoes_adicionais']);
+			$a ->set_ativo($row['ativo']);
+			$a ->set_vendas_registradas($row['vendas_registradas']);
+			array_push($lista, $a);
+		}
+
+		return $lista;
+	}
+
+	
 
     /*function obter_por_nome($nome){
 		$lista = [];
