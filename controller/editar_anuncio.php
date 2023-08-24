@@ -12,10 +12,10 @@ if (isset($_POST['titulo_anuncio'])) {
     $anuncio->set_informacoes_adicionais($_POST['info_adic']);
     if ($dao->alterar($anuncio)) {
         echo"<script>alert('Anúncio atualizado com sucesso!')</script>";
-        header(".../view/meus_anuncios.php");
+        header("Location:view/meus_anuncios.php");
     } else {
         echo"<script>alert('Erro ao atualizar anúncio!')</script>";
-        header(".../view/meus_anuncios.php");
+        header("Location:view/meus_anuncios.php");
     }
 }
 ?>

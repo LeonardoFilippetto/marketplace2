@@ -44,6 +44,41 @@ class UsuarioDAO{
 
     function obter($id){
         $result = $this->con->query("SELECT * FROM usuarios WHERE (id_produto = " . $id . ");");
+        if ($result->rowCount() > 0){
+            
+            $row = $result->fetch(PDO::FETCH_ASSOC);
+
+            $u = new Usuario();
+            $u->set_id_usuario($row['id_usuario']);
+            $u->set_cpf($row['cpf']);
+            $u->set_cnpj($row['cnpj']);
+            $u->set_data_nasc($row['data_nasc']);
+            $u->set_celular($row['celular']);
+            $u->set_email($row['email']);
+            $u->set_senha($row['senha']);
+            $u->set_nome($row['nome']);
+            $u->set_razao_social($row['razao_social']);
+            $u->set_tributo($row['tributo']);
+            $u->set_nome_fantasia($row['nome_fantasia']);
+            $u->set_telefone_empresa($row['telefone_empresa']);
+            $u->set_cep($row['cep']);
+            $u->set_logradouro($row['logradouro']);
+            $u->set_numero($row['numero']);
+            $u->set_complemento($row['complemento']);
+            $u->set_bairro($row['bairro']);
+            $u->set_cidade($row['cidade']);
+            $u->set_referencia($row['referencia']);
+
+            return $u;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function obter_por_email($email){
+        $result = $this->con->query("SELECT * FROM usuarios WHERE (email = " . $email . ");");
+
         $row = $result->fetch(PDO::FETCH_ASSOC);
 
         $u = new Usuario();
