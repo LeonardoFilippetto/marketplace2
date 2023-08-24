@@ -22,7 +22,7 @@ class AnuncioDAO{
 	}
 
 	function alterar($anuncio){
-		$result = $this->con->query("UPDATE anuncios SET id_produto = '" . $anuncio->get_id_produto() . "', id_vendedor = '" . $anuncio->get_id_vendedor() . "', titulo_anuncio = '" . $anuncio->get_titulo_anuncio() . "', categoria_produto = '" . $anuncio->get_categoria_anuncio() . "', preco = '" . $anuncio->get_preco() . "', estoque = '" . $anuncio->get_estoque() . "', img_princ = '" . $anuncio->get_img_princ() . "', imgs_sec = '" . $anuncio->get_imgs_sec() . "', descricao = '" . $anuncio->get_descicao() . "', informacoes_adicionais = '" . $anuncio->get_informacoes_adicionais() . "', ativo = '" . $anuncio->get_ativo() . "', vendas_registradas = '" . $anuncio->get_vendas_registradas() . "' WHERE (id_anuncio = " . $anuncio->get_id_anuncio(). ")");
+		$result = $this->con->query("UPDATE anuncios SET id_vendedor = '" . $anuncio->get_id_vendedor() . "', titulo_anuncio = '" . $anuncio->get_titulo_anuncio() . "', categoria_produto = '" . $anuncio->get_categoria_anuncio() . "', preco = '" . $anuncio->get_preco() . "', estoque = '" . $anuncio->get_estoque() . "', img_princ = '" . $anuncio->get_img_princ() . "', imgs_sec = '" . $anuncio->get_imgs_sec() . "', descricao = '" . $anuncio->get_descicao() . "', informacoes_adicionais = '" . $anuncio->get_informacoes_adicionais() . "', ativo = '" . $anuncio->get_ativo() . "', vendas_registradas = '" . $anuncio->get_vendas_registradas() . "' WHERE (id_anuncio = " . $anuncio->get_id_anuncio(). ")");
 
 		if ($result->rowCount() > 0){
    			return true;
@@ -91,7 +91,30 @@ class AnuncioDAO{
 	}
 
 
+	function obter_por_vendedor($id_vendedor){
+		$lista = [];
+		$result =$this->con->query("SELECT * FROM anuncios WHERE (id_vendedor = '" . $id_vendedor . "');");
+ 
+		while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+			$a = new anuncio();
+		    $a ->set_id_anuncio($row['id_anuncio']);
+			$a ->set_id_produto($row['id_produto']);
+			$a ->set_id_vendedor($row['id_vendedor']);
+			$a ->set_titulo_anuncio($row['titulo_anuncio']);
+			$a ->set_categoria_produto($row['categoria_produto']);
+			$a ->set_preco($row['preco']);
+			$a ->set_estoque($row['estoque']);
+			$a ->set_img_princ($row['img_princ']);
+			$a ->set_imgs_sec($row['imgs_sec']);
+			$a ->set_descricao($row['descricao']);
+			$a ->set_informacoes_adicionais($row['informacoes_adicionais']);
+			$a ->set_ativo($row['ativo']);
+			$a ->set_vendas_registradas($row['vendas_registradas']);
+			array_push($lista, $a);
+		}
 
+		return $lista;
+	}
 
 
 

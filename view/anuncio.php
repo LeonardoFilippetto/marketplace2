@@ -36,11 +36,11 @@ $usuario = $dao_u->obter($anuncio->get_id_vendedor());
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
         <script defer src="https://kit.fontawesome.com/0e01c81990.js" crossorigin="anonymous"></script>
 
-        <link rel="stylesheet" href="css/default.css">
-        <link rel="stylesheet" href="css/index.css">
-        <link rel="stylesheet" href="css/anuncio.css">
-        <script src="js/busca.js"></script>
-        <script src="js/accordion.js"></script>
+        <link rel="stylesheet" href="../css/default.css">
+        <link rel="stylesheet" href="../css/index.css">
+        <link rel="stylesheet" href="../css/anuncio.css">
+        <script src="../js/busca.js"></script>
+        <script src="../js/accordion.js"></script>
     
     </head>
     <body>
