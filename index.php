@@ -56,20 +56,21 @@ if(isset($_POST['search'])){
       
     </head>
     <body>
-  
+
     <?php
         require "req_navbar.php" 
     ?>
+
+    <div id="progressbar"></div>
  
     <div class="carousel-container">
         <div class="carousel-slide">
-            <img src="img/banner.png" alt="" class="banner_img">
+            <img src="img/1.png" alt="" class="banner_img">
         </div>
         <div class="carousel-slide">
-            <img src="img/banner02.png" alt="" class="banner_img">
+            <img src="img/2.png" alt="" class="banner_img">
         </div>
         
-      
         <a href="#" class="carousel-prev"><i class="fa-solid fa-chevron-right fa-rotate-180 fa-lg" style="color: #ffffff;"></i></a>
         <a href="#" class="carousel-next"><i class="fa-solid fa-chevron-right fa-lg" style="color: #ffffff;"></i></a>
     </div>

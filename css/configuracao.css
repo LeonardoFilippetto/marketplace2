@@ -1,14 +1,14 @@
-body{
+body {
     justify-content: normal;
 }
 
-nav h1{
-    color:#fff;
+nav h1 {
+    color: #fff;
 }
 
-#etapas{
+#etapas {
     font-weight: bold;
-    width:95%;
+    width: 95%;
     height: 5rem;
     margin: 1rem auto;
     background-color: #f7f7f7;
@@ -19,21 +19,21 @@ nav h1{
     font-size: 0.75rem;
 }
 
-.etapa{
+.etapa {
     flex: 1;
 }
 
-#pecas{
+#pecas {
     display: inline-block;
     width: 65vw;
 }
 
-#info{
-    display:inline-block;
+#info {
+    display: inline-block;
     width: 25vw;
 }
 
-#main{
+#main {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -42,94 +42,113 @@ nav h1{
 }
 
 .search-container {
-    margin: auto;
-    border-radius: 30px;
-    background-color: #e4e4e4;
-    display: flex;
-    align-items: center;
-    padding-right: 0.3rem
+    float: right;
+    border-radius: 10px;
+    background-color: #ff0000;
+    padding: 0.2rem;
 }
 
-#cabecalho{
+
+input[type=text] {
+    padding: 0.4rem 0.8rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    background-color: #ff0000;
+    color: #363636;
+    text-align: left;
+
+}
+
+.lupa {
+    cursor: pointer;
+}
+
+.lupa:hover {
+    animation: animate 0.5s;
+    transition: 1s;
+}
+
+#cabecalho {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
-#grid{
+#grid {
     overflow-y: scroll;
 }
 
-#lista{
+#lista {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
 }
 
-.container_botoes{
+.container_botoes {
     flex: 4;
     cursor: default;
 }
 
-.container_botoes:hover{
+.container_botoes:hover {
     cursor: default;
 }
 
-.anuncio_lista{
+.anuncio_lista {
     width: 90%;
     height: 11rem;
-    margin: 1rem; 
+    margin: 1rem;
     display: flex;
     flex-direction: row;
 }
 
-.img_anunc_lista{
+.img_anunc_lista {
     margin: 0 0.5rem;
     flex: 3;
 }
 
-.titulo_anunc_lista{
+.titulo_anunc_lista {
     flex: 5;
 }
 
-.preco_lista{
+.preco_lista {
     flex: 3;
 }
 
-.btn_selecionar{
+.btn_selecionar {
     border-radius: 0.3rem;
     height: 3rem;
     width: 4rem;
     margin: 0 1rem;
-    border: 0;  
+    border: 0;
     cursor: pointer;
     transition: 0.25s;
     display: inline-block;
 }
 
-.btn_retirar{
+.btn_retirar {
     background-color: #ff0000;
     opacity: 0;
     cursor: default;
 }
 
-.btn_retirar:hover{
+.btn_retirar:hover {
     background-color: #ff3737;
     transform: scale(1.05);
     cursor: default;
 }
 
-.btn_adicionar{
+.btn_adicionar {
     background-color: #00d200;
 }
 
-.btn_adicionar:hover{
+.btn_adicionar:hover {
     background-color: #41de41;
     transform: scale(1.05);
 }
 
-.icone{
+.icone {
     height: 1rem;
 }

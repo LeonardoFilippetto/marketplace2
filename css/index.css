@@ -1,32 +1,22 @@
 nav.navbar {
-    background-color: #1B1F27;
+    background-color: #0b111d;
     height: 12vh;
 }
 
-/*logo index*/
-#logo_nav {
-    color: #fff;
-    font-size: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
-    animation: animate 0.35s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 
+.navbar-toggler {}
+
+.navbar-toggler:hover {
+    background-color: #d8e0ff !important;
+    transition: 1s;
 }
 
 
-.navbar-toggler {
-    background-color: #fff !important;
-}
-
-
-/* pagina meus anuncios*/
 .search-container {
     float: right;
-    border-radius: 30px;
-    background-color: #e4e4e4;
-    display: flex;
-    align-items: center;
-    padding-right: 0.3rem
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 0.2rem;
 }
 
 
@@ -35,35 +25,26 @@ input[type=text] {
     font-size: 1rem;
     border: none;
     border-radius: 30px;
-    background-color: #e4e4e4;
+    background-color: #ffffff;
     color: #363636;
     text-align: left;
 
 }
 
-.search-container button {
-    float: right;
-    padding: 6px 10px;
-    margin-top: 8px;
-    margin-right: 16px;
-    margin-left: 10px;
-    background-color: #5568FE;
-    font-size: 17px;
-    border: none;
-    border-radius: 30px;
+.lupa {
     cursor: pointer;
 }
 
-.search-container button:hover {
-    background: #ccc;
+.lupa:hover {
+    animation: animate 0.5s;
+    transition: 1s;
 }
+
 
 .carousel-container {
-    animation: animate 0.35s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: animate 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 
 }
-
-
 
 .carousel-slide {
     width: 100%;
@@ -84,14 +65,17 @@ input[type=text] {
     transform: translateY(-50%);
     color: #fff;
     text-decoration: none;
+    font-size: 20px;
 }
 
+
+
 .carousel-prev {
-    left: 15px;
+    left: 20px;
 }
 
 .carousel-next {
-    right: 15px;
+    right: 20px;
 }
 
 
@@ -176,10 +160,6 @@ button:focus {
     outline: none;
 }
 
-#lupa:hover {
-    cursor: pointer;
-
-}
 
 
 /* Efeito */
