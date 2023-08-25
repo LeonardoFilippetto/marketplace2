@@ -34,18 +34,6 @@ if(isset($_POST['cad'])){
     $hidden_inputs .= "<input type='hidden' name='celular' value='".$celular_limpo."'>";
     $hidden_inputs .= "<input type='hidden' name='data_nasc' value='".$_POST['data_nasc']."'>";
 }
-/*if(isset($_POST['numero'])){
-    $numero_form=$_POST['numero'];
-    $complemento_form=$_POST['complemento'];
-    $logradouro_form=$_POST['logradouro'];
-    $bairro_form=$_POST['bairro'];
-    $cep_form=$_POST['cep'];
-    $cidade_form=$_POST['cidade'];
-    $referencia_form=$_POST['referencia'];
-
-    $query = "INSERT INTO usuarios (cep, logradouro, data, numero, bairro, complemento, cidade, referencia, nome, cpf, email, senha, celular) VALUES ($cep_form, $logradouro_form, $data_form, $numero_form, $bairro_form, $complemento_form)";
-    $result = mysqli_query($con, $query);
-}*/
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
