@@ -85,6 +85,49 @@ class ProdutoDAO{
 		return $p;
     }
 
+    function obter_por_anuncio($id_anuncio){
+        $result = $this->con->query("SELECT * FROM produtos WHERE (id_anuncio = " . $id_anuncio . ");");
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+
+        $p = new Produto();
+		$p->set_id_produto($row['id_produto']);
+		$p->set_id_anuncio($row['id_anuncio']);
+		$p->set_id_vendedor($row['id_vendedor']);
+        $p->set_altura($row['altura']);
+        $p->set_barramento_encaixe_armazenamento($row['barramento_encaixe_armazenamento']);
+        $p->set_barramento_encaixe_video($row['barramento_encaixe_video']);
+        $p->set_barramentos_ram($row['barramentos_ram']);
+        $p->set_barramentos_video($row['barramentos_video']);
+        $p->set_comprimento($row['comprimento']);
+        $p->set_ean($row['ean']);
+        $p->set_fabricante($row['fabricante']);
+        $p->set_fab_comp($row['fab_comp']);
+        $p->set_fator_forma($row['fator_forma']);
+        $p->set_formato_gabinete($row['formato_gabinete']);
+        $p->set_frequencia($row['frequencia']);
+        $p->set_largura($row['largura']);
+        $p->set_linha($row['linha']);
+        $p->set_modelo($row['modelo']);
+        $p->set_max_ram($row['max_ram']);
+        $p->set_nucleos($row['nucleos']);
+        $p->set_potencia($row['potencia']);
+        $p->set_quantidade_armazenamento($row['quantidade_armazenamento']);
+        $p->set_quantidade_pentes($row['quantidade_pentes']);
+        $p->set_ram_pente_individual($row['ram_pente_individual']);
+        $p->set_ram_placa_video($row['ram_placa_video']);
+        $p->set_ram_total($row['ram_total']);
+        $p->set_resfriamento($row['resfriamento']);
+        $p->set_soquete($row['soquete']);
+        $p->set_selo_80_plus($row['selo_80_plus']);
+        $p->set_suporta_sata($row['suporta_sata']);
+        $p->set_suporta_nvme($row['suporta_nvme']);
+        $p->set_tipo_armazenamento($row['tipo_armazenamento']);
+        $p->set_tipo_ram($row['tipo_ram']);
+        $p->set_video_integrado($row['video_integrado']);
+
+		return $p;
+    }
+
     function obter_todos(){
         $lista = [];
         $result = $this->con->query("SELECT * FROM produtos;");

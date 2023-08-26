@@ -93,7 +93,7 @@ class AnuncioDAO{
 
 	function obter_por_vendedor($id_vendedor){
 		$lista = [];
-		$result =$this->con->query("SELECT * FROM anuncios WHERE (id_vendedor = '" . $id_vendedor . "');");
+		$result =$this->con->query("SELECT * FROM anuncios WHERE (id_vendedor = '" . $id_vendedor . "') ORDER BY id_anuncio DESC;");
  
 		while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 			$a = new anuncio();
@@ -114,6 +114,29 @@ class AnuncioDAO{
 		}
 
 		return $lista;
+	}
+
+	function obter_ultimo_por_vendedor($id_vendedor){
+		$lista = [];
+		$result =$this->con->query("SELECT * FROM anuncios WHERE (id_vendedor = '" . $id_vendedor . "') ORDER BY id_anuncio DESC LIMIT 1;");
+		$row = $result->fetch(PDO::FETCH_ASSOC);
+
+			$a = new anuncio();
+		    $a ->set_id_anuncio($row['id_anuncio']);
+			$a ->set_id_produto($row['id_produto']);
+			$a ->set_id_vendedor($row['id_vendedor']);
+			$a ->set_titulo_anuncio($row['titulo_anuncio']);
+			$a ->set_categoria_produto($row['categoria_produto']);
+			$a ->set_preco($row['preco']);
+			$a ->set_estoque($row['estoque']);
+			$a ->set_img_princ($row['img_princ']);
+			$a ->set_imgs_sec($row['imgs_sec']);
+			$a ->set_descricao($row['descricao']);
+			$a ->set_informacoes_adicionais($row['informacoes_adicionais']);
+			$a ->set_ativo($row['ativo']);
+			$a ->set_vendas_registradas($row['vendas_registradas']);
+
+		return $a;
 	}
 
 

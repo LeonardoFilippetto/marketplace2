@@ -1,14 +1,19 @@
+<?php
+session_start();
+if(!isset($_SESSION['id_usuario']))
+  header("Location:./view/login.php");
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" type="text/css" href="css/cadastro.css">
+    <link rel="stylesheet" type="text/css" href="./css/cadastro.css">
     <script src="js/cadastro_anuncio_inicio.js" defer></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-... (hash)" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <script src="js/cadastro_anuncio_inicio.js" defer></script>
-    <title>Informações do anúncio</title>
+    <script src="./js/cadastro_anuncio_inicio.js" defer></script>
+    <title>Cadastro de Anúncio</title>
     <!-- <script defer src="js/cadastro_inicio.js"></script> -->
     <style>
    /* Reset default browser styles */
@@ -21,7 +26,7 @@
     <a class="btn-voltar" href="meus_anuncios.php"> <h1><i class="fa-solid fa-arrow-left fa-lx" style="color: #ffffff;"></i> Voltar</h1></a>
 </header>
 
-    <form method="POST" action="cadastro_anuncio_produto.php" id="form_cad">
+    <form method="POST" action="./controller/transicao_cadastro_anuncio_inicio.php" id="form_cad">
         <div class="cadastre-se">
             <h1>Informações do Anúncio</h1>
 
@@ -33,12 +38,12 @@
                 </div>
                 <div class="entrar-items">
                     <label for="preco_anuncio">Preço do anúncio:*</label>
-                    <input type="number" id="preco_anunc" name="preco_anunc" placeholder="500,00" required >
+                    <input type="number" id="preco_anunc" name="preco" placeholder="500,00" required >
                     <p id="mens_preco_anunc" class="mens"></p>
                 </div>
                 <div class="entrar-items">
                   <label for="tipo_produto">Tipo de produto:*</label>
-                    <select name="tipo_produto" id="tipo_produto" required>
+                    <select name="categoria_produto" id="tipo_produto" required>
                       <option value="">Selecione uma opção</option>
                       <option value="placa_mae">Placa-mãe</option>
                       <option value="processador">Processador</option>
@@ -54,10 +59,10 @@
                 <div class="cond_prod">
                     <label>Condição do Produto:*</label>
                     <div class="radio">
-                        <input type="radio" id="novo" name="cond" value="novo" onclick="mostrarUso(event)" > <label for="novo" style="margin:0; width:30%; padding:0.2rem;">Novo</label>
+                        <input type="radio" id="novo" name="condicao" value="novo" onclick="mostrarUso(event)" > <label for="novo" style="margin:0; width:30%; padding:0.2rem;">Novo</label>
                     </div>
                     <div class="radio">
-                        <input type="radio" id="usado" name="cond" value="usado" onclick="mostrarUso(event)"> <label for="usado" style="margin:0; width:30%; padding:0.2rem;">Usado</label>
+                        <input type="radio" id="usado" name="condicao" value="usado" onclick="mostrarUso(event)"> <label for="usado" style="margin:0; width:30%; padding:0.2rem;">Usado</label>
                     </div><br>
                 </div>
                 

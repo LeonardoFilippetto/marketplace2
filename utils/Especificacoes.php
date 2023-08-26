@@ -1,6 +1,6 @@
 <?php
 
-class Messages
+class Especificacoes
 {	
 	
 	public static function monta_especificacoes($produto){

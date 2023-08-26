@@ -10,6 +10,7 @@ class Produto
 	private $barramentos_ram;
 	private $barramentos_video;
 	private $comprimento;
+	private $condicao;
 	private $ean;
 	private $fabricante;
 	private $fab_comp;
@@ -32,6 +33,7 @@ class Produto
 	private $selo_80_plus;
 	private $suporta_sata;
 	private $suporta_nvme;
+	private $tempo_uso;
 	private $tipo_armazenamento;
 	private $tipo_ram;
 	private $video_integrado;
@@ -111,6 +113,15 @@ class Produto
 
 	function get_comprimento(){
 		return $this->comprimento;
+	}
+
+	// Métodos para atributo condicao
+	function set_condicao($condicao){
+		$this->condicao = $condicao;
+	}
+
+	function get_condicao(){
+		return $this->condicao;
 	}
 
 	// Métodos para atributo ean
@@ -308,6 +319,15 @@ class Produto
 
 	function get_suporta_nvme(){
 		return $this->suporta_nvme;
+	}
+
+	// Métodos para atributo tempo_uso
+	function set_tempo_uso($tempo_uso){
+		$this->tempo_uso = $tempo_uso;
+	}
+
+	function get_tempo_uso(){
+		return $this->tempo_uso;
 	}
 
 	// Métodos para atributo tipo_armazenamento
