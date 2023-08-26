@@ -11,8 +11,8 @@ if(!$usuario){
 }
 
 if(password_verify($_POST['senha'], $usuario->get_senha())) {
-    $_SESSION["email_usuario"] = $usuario->get_id_usuario();
-    $_SESSION["id_usuario"] = $usuario->get_senha();
+    $_SESSION["email_usuario"] = $usuario->get_email();
+    $_SESSION["id_usuario"] = $usuario->get_id_usuario();
     header('Location:view/index.php');
 }else{
     $_SESSION['login_err']==true;

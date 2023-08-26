@@ -1,6 +1,6 @@
 <?php 
 require_once('..\bd\gerenciador_de_conexoes.php');
-require_once('UsuarioDAO.php');
+require_once('UsuarioDTO.php');
 
 class UsuarioDAO{
     private $con;

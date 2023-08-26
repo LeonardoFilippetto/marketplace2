@@ -9,7 +9,7 @@ if(isset($_POST['pagina_anterior'])){
 
 ?>
 
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <link rel="stylesheet" type="text/css" href="css/cadastro.css">
