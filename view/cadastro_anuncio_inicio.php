@@ -1,18 +1,18 @@
 <?php
 session_start();
 if(!isset($_SESSION['id_usuario']))
-  header("Location:./view/login.php");
+  header("Location:../view/login.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" type="text/css" href="./css/cadastro.css">
+    <link rel="stylesheet" type="text/css" href="../css/cadastro.css">
     <script src="js/cadastro_anuncio_inicio.js" defer></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-... (hash)" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <script src="./js/cadastro_anuncio_inicio.js" defer></script>
+    <script src="../js/cadastro_anuncio_inicio.js" defer></script>
     <title>Cadastro de Anúncio</title>
     <!-- <script defer src="js/cadastro_inicio.js"></script> -->
     <style>
@@ -26,7 +26,7 @@ if(!isset($_SESSION['id_usuario']))
     <a class="btn-voltar" href="meus_anuncios.php"> <h1><i class="fa-solid fa-arrow-left fa-lx" style="color: #ffffff;"></i> Voltar</h1></a>
 </header>
 
-    <form method="POST" action="./controller/transicao_cadastro_anuncio_inicio.php" id="form_cad">
+    <form method="POST" action="../controller/transicao_cadastro_anuncio_inicio.php" id="form_cad">
         <div class="cadastre-se">
             <h1>Informações do Anúncio</h1>
 

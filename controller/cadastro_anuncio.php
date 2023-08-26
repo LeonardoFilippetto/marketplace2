@@ -1,7 +1,7 @@
 <?php
 
 if(!isset($_POST['descricao']))
-    header("Location:./index.php");
+    header("Location:../index.php");
 
 session_start();
 function random_string($length) {
@@ -12,8 +12,8 @@ function random_string($length) {
     return $str;
 }
 
-require_once("./model/AnuncioDAO.php");
-require_once("./model/ProdutoDAO.php");
+require_once("../model/AnuncioDAO.php");
+require_once("../model/ProdutoDAO.php");
 
 $dao_p = new ProdutoDAO();
 $dao_a = new AnuncioDAO();
@@ -120,14 +120,14 @@ if($dao_a->inserir($anuncio)){
 
         if($dao_a->alterar($anuncio)){
             echo "<script>alert('Anúncio cadastrado com sucesso!)</script>";
-            header("Location:./view/meus_anuncios.php");
+            header("Location:../view/meus_anuncios.php");
         }
 
     }
 }
 
 echo "<script>alert('Erro ao cadastrar anúncio!)</script>";
-header("Location:./view/meus_anuncios.php");
+header("Location:../view/meus_anuncios.php");
 
 
 

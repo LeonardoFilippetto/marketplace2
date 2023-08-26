@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['form_produto']))
-    header("Location:./view/index.php");
+    header("Location:../view/index.php");
 
 $form_produto=$_SESSION['form_produto'];
 $hidden_inputs=$_SESSION['hidden_inputs'];
@@ -12,7 +12,7 @@ session_unset($_SESSION['hidden_inputs']);
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" type="text/css" href="./css/cadastro.css">
+    <link rel="stylesheet" type="text/css" href="../css/cadastro.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +29,7 @@ session_unset($_SESSION['hidden_inputs']);
 <header>
     <a class="btn-voltar" href="meus_anuncios.php"> <h1><i class="fa-solid fa-arrow-left fa-lx" style="color: #ffffff;"></i> Voltar</h1></a>
 </header>
-    <form method="POST" action="./controller/transicao_cadastro_anuncio_info_adic.php">
+    <form method="POST" action="../controller/transicao_cadastro_anuncio_info_adic.php">
         <div class="cadastre-se">
                 <div class="entrar-items">
                   <label for="ean">EAN (código de barras):*</label>

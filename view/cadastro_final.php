@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['hidden_inputs']))
-    header("Location:./view/index.php");
+    header("Location:../view/index.php");
 
 $hidden_inputs=$_SESSION['hidden_inputs'];
 session_unset($_SESSION['hidden_inputs']);
@@ -10,13 +10,13 @@ session_unset($_SESSION['hidden_inputs']);
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" type="text/css" href="./css/cadastro.css">
+    <link rel="stylesheet" type="text/css" href="../css/cadastro.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-... (hash)" crossorigin="anonymous" referrerpolicy="no-referrer">
     <title>Cadastro de Usuário</title>
-    <script defer src="./js/cadastro_final.js"></script>
+    <script defer src="../js/cadastro_final.js"></script>
     <style>
         form{
           width: 900px;
@@ -27,7 +27,7 @@ session_unset($_SESSION['hidden_inputs']);
 <header>
     <a class="btn-voltar" href="cadastro_inicio.php"> <h1><i class="fa-solid fa-arrow-left fa-lx" style="color: #ffffff;"></i> Voltar</h1></a>
 </header>
-    <form method="POST" action="./controller/cadastro_usuario.php">
+    <form method="POST" action="../controller/cadastro_usuario.php">
         <div class="cadastre-se">
             <div class="cadastro">
                 <h1>Cadastro</h1>

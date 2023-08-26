@@ -1,9 +1,9 @@
 <?php
 session_start();
 if(!isset($_POST['numero']))
-header("Location:./view/index.php");
+header("Location:../view/index.php");
 
-require_once('./model/UsuarioDAO.php');
+require_once('../model/UsuarioDAO.php');
 $dao = new UsuarioDAO();
 $usuario = new Usuario();
 
@@ -38,10 +38,10 @@ if($dao->inserir($usuario)){
     echo'<script>alert("Cadastro realizado com sucesso!");</script>';
     $_SESSION["email_usuario"] = $usuario->get_email();
     $_SESSION["id_usuario"] = $usuario->get_id_usuario();
-    header("Location:./view/index.php");
+    header("Location:../view/index.php");
 }else{
     echo'<script>alert("Erro ao realizar cadastro!");</script>';
-    header("Location:./view/index.php");
+    header("Location:../view/index.php");
 }
 
 ?>

@@ -2,7 +2,7 @@
 session_start();
 $hidden_inputs = "";
 if(!isset($_POST['cad']))
-    header("Location:./view/index.php");
+    header("Location:../view/index.php");
 
     $cad=$_POST['cad'];
     $options = ['cost' => 12,];
@@ -32,5 +32,5 @@ if(!isset($_POST['cad']))
     $hidden_inputs .= "<input type='hidden' name='data_nasc' value='".$_POST['data_nasc']."'>";
 
     $_SESSION['hidden_inputs']=$hidden_inputs;
-    header("Location:./view/cadastro_final.php");
+    header("Location:../view/cadastro_final.php");
 ?>
