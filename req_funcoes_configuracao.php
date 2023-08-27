@@ -21,8 +21,6 @@
 
     function retorna_query($etapa, $vetor_config){
 
-
-
         if($etapa=="processador"){
             return "SELECT * FROM anuncios WHERE categoria_produto='$etapa'";
         }

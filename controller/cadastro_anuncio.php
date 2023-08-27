@@ -111,6 +111,7 @@ if($dao_a->inserir($anuncio)){
     $anuncio=$dao_a->obter_ultimo_por_vendedor($_SESSION['id_usuario']);
 
     $produto->set_id_anuncio($anuncio->get_id_anuncio());
+    $produto->set_id_vendedor($_SESSION['id_usuario']);
 
     if($dao_p->inserir($produto)){
 

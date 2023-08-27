@@ -1,3 +1,47 @@
+<?php
+    require_once("../model/AnuncioDAO.php");
+    require_once('../model/ProdutoDAO.php');
+    require_once('../utils/Configuracao.php');
+
+    $dao_a = new AnuncioDAO();
+
+    session_start();
+    $etapa="processador";
+    $max_quant_anunc=1;
+    $restricoes='';
+    $subtotal=0;
+    $titulo_etapa='Processador';
+    $max_quant_anunc=1;
+
+    if(!isset($_SESSION['config'])){
+        $_SESSION['config']=[];
+    }else{
+        //implementar
+    }
+
+    if(isset($_SESSION['etapa'])){
+        $etapa=$_SESSION['etapa'];
+        $proxima_etapa=$_SESSION['proxima_etapa'];
+        $restricoes=$_SESSION['restricoes'];
+        $max_quant_anunc=$_SESSION['max_quant_anunc'];
+        $string_listagem=$_SESSION['string_listagem'];
+        $titulo_etapa=$_SESSION['titulo_etapa'];
+        $subtotal=$_SESSION['subtotal'];
+
+        session_unset($_SESSION['etapa']);
+        session_unset($_SESSION['proxima_etapa']);
+        session_unset($_SESSION['restricoes']);
+        session_unset($_SESSION['max_quant_anunc']);
+        session_unset($_SESSION['string_listagem']);
+        session_unset($_SESSION['titulo_etapa']);
+        session_unset($_SESSION['subtotal']);
+
+    }else{
+        $string_listagem=Configuracao::monta_listagem($dao_a->obter_processador_configuracao());
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,7 +129,7 @@
                     </form>
                 <?php } echo $titulo_etapa;?>
 
-                <form action="" method="post" id="frm_busca" autocomplete="off" class="d-none d-md-block">
+                <form action="../controller/configuracao.php" method="post" id="frm_busca" autocomplete="off" class="d-none d-md-block">
                     <div class="search-container">
                         <input type="text" placeholder="Buscar" name="search" id="busca">
                         <input type="hidden" name="etapa" value="<?php echo $etapa; ?>">
@@ -94,53 +138,13 @@
                 </form>
 
             </div>
-<?php
-
-    echo ($etapa != "ram") ? "<div id='grid'>" : "<div id='lista'>";
-    if(mysqli_num_rows($result)!=0){
-        while ($row = mysqli_fetch_array($result)) {
-            $id_anunc=($row['id_anuncio']);
-            $id_vend=($row['id_vendedor']);
-            $nome_prod=($row['titulo_anuncio']);
-            //$tipo=($row['tipo_prod']);
-            $preco=($row['preco']);
-            $img_princ=($row['img_princ']);
-            
-            if($etapa=='ram'){
-                $pentes=$row['quantidade_pentes'];
-                $ram_total=$row['ram_total'];
-
-                echo"<div class='anuncio anuncio_lista' id='".$id_anunc."' onclick='pagAnunc(event)'>
-                <div class='img_anunc img_anunc_lista'>
-                    <img src='img/".$img_princ."' >
-                </div>
-                <span class='titulo_anunc titulo_anunc_lista'>$nome_prod</span>
-                <span id='preco_".$id_anunc."' class='preco preco_lista'>R$ ".number_format($preco, 2, ',', '.')."</span>
-                <div class='container_botoes'><button disabled class='btn_selecionar btn_retirar' id='retirar_".$id_anunc."'><img class='icone' src='img/icons/menos.png'></button><button class='btn_selecionar btn_adicionar' id='adicionar_".$id_anunc."'><img class='icone' src='img/icons/mais.png'></button></div>
-                </div>";
-                
-            }else{
-                echo"<div class='anuncio' id='".$id_anunc."' onclick='pagAnunc(event)'>
-                <input type='checkbox' id='check_".$id_anunc."' onchange='selecionarPeca(this)'>
-                <div class='img_anunc'>
-                    <img src='img/".$img_princ."' >
-                </div>
-                <span class='titulo_anunc'>$nome_prod</span>
-                <span id='preco_".$id_anunc."' class='preco'>R$ ".number_format($preco, 2, ',', '.')."</span>
-                </div>";
-            }
-
-            
-        }
-    }
-    echo"</div>";
-?>
+<?php echo $string_listagem; ?>
         </div>
         <div id="info">
             <form action="" method="post" id="prox_et">
 
                 <input type="hidden" name="subtotal_inicial" id="subtotal_inicial" value="R$<?php echo number_format($subtotal, 2, ',', '.'); ?>">
-                <input type="hidden" name="proxima_etapa" id="input_proxima_etapa" value="<?php echo $vetor_etapas[(array_search($etapa, $vetor_etapas)+1)]; ?>">
+                <input type="hidden" name="proxima_etapa" id="input_proxima_etapa" value="<?php echo $proxima_etapa; ?>">
                 <input type="hidden" name="max_quant_anunc" id="max_quant_anunc" value="<?php echo $max_quant_anunc; ?>">
                 <input type="hidden" name="quant_anunc" id="quant_anunc" value="0">
 
@@ -148,7 +152,7 @@
                 <input type="hidden" class="quant_anunc" name="quantidade_0" id="quantidade_0" value="1">
                 <input type="hidden" class="preco_anunc" name="preco_anunc_0" id="preco_anunc_0" value="0">
 
-                <?php echo $restricoes_ram; ?>
+                <?php echo $restricoes; ?>
 
                 <input type="submit" id="submit_avancar" value="SELECIONE UM PRODUTO" disabled >
             </form>

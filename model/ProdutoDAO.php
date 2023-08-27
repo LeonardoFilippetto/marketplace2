@@ -170,6 +170,10 @@ class ProdutoDAO{
             array_push($lista, $p);
         }
 
+        public function obter_vetor_atributos() {
+            return get_object_vars($this);
+        }
+
         return $lista;
     }
 }
