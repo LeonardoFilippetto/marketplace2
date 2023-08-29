@@ -29,15 +29,14 @@ $anuncios = $dao->obter_por_vendedor($_SESSION['id_usuario']);
 <body>
   
 <?php
-    require("req_navbar.php")
-
+    require("req_navbar.php");
     if($anuncios!=[]){
         echo "<h1 style='margin-top:5rem;'>Meus Anúncios</h1><a class='link_criar_anuncio' href='cadastro_anuncio_inicio.php'><i class='fa-solid fa-plus fa-lg'></i>   Criar novo anúncio de venda</a><div id='grid'>";
         
            foreach($anuncios as $anuncio) {
                 echo "<div class='anuncio'>
                     <div class='img_anunc'>
-                        <img src='img/".$anuncio->get_img_princ()."' >
+                        <img src='../img/".$anuncio->get_img_princ()."' >
                     </div>
                     <span class='titulo_anunc'>".$anuncio->get_titulo_anuncio()."</span>
                     <span class='preco'>R$ ".number_format($anuncio->get_preco(), 2, ',', '.')."</span>

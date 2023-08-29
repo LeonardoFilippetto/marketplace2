@@ -39,11 +39,9 @@ nav {
 
 .search-container {
     float: right;
-    border-radius: 30px;
-    background-color: #e4e4e4;
-    display: flex;
-    align-items: center;
-    padding-right: 0.3rem;
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 0.2rem;
 }
 
 input[type=text] {
@@ -51,7 +49,7 @@ input[type=text] {
     font-size: 1rem;
     border: none;
     border-radius: 30px;
-    background-color: #e4e4e4;
+    background-color: #ffffff;
     color: #363636;
     text-align: left;
 

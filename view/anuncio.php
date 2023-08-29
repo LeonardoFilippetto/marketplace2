@@ -48,30 +48,30 @@ $usuario = $dao_u->obter($anuncio->get_id_vendedor());
 
         
         <?php
-            require "req_navbar.php" 
+            require("req_navbar.php") ;
         ?>
 
         </header>
 
         <div id="main" class="secao">
-            <h1><b><?php echo $titulo; ?></b></h1>
+            <h1><b><?php echo $anuncio->get_titulo_anuncio(); ?></b></h1>
             <div id="imagens" class="secao_main">
                 <div id="imgs_secundarias">
-                <div class='img_sec'><img src='img/<?php echo $anuncio->get_img_princ(); ?>' class='img_sec'></div>
+                <div class='img_sec'><img src='../img/<?php echo $anuncio->get_img_princ(); ?>' class='img_sec'></div>
                     <?php
                         foreach($anuncio->get_imgs_sec() as $imagem){
-                            echo"<div class='img_sec'><img src='img/$imagem' ></div>";
+                            echo"<div class='img_sec'><img src='../img/$imagem' ></div>";
                         }
                     ?>
                 </div>
                 <div id="img_principal">
-                    <img src="img/<?php echo $anuncio->get_img_princ(); ?>">
+                    <img src="../img/<?php echo $anuncio->get_img_princ(); ?>">
                 </div>
             </div>
 
             <div id="info_principal"  class="secao_main">
                 <div id="info_geral">
-                    <p>**avaliação** **condição** <?php echo $fabricante; ?></p>
+                    <p>**avaliação** **condição** <?php echo $produto->get_fabricante(); ?></p>
                 </div>
                 <div id="frete">
                     <?php if(!isset($_SESSION['id_usuario'])){?>

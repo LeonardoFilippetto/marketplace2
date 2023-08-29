@@ -17,7 +17,7 @@ if(isset($_SESSION['login_err'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-... (hash)" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="../css/login.css">
 
     <header>
     <a class="btn-voltar" href="index.php"> <h1><i class="fa-solid fa-arrow-left fa-lx" style="color: #ffffff;"></i> Voltar</h1></a>
@@ -46,7 +46,7 @@ if(isset($_SESSION['login_err'])){
         </div>
 
         <div class="right-section">
-           <img src="img/Tablet login-cuate.png" class="tablet-image" style="max-width:700px;"alt="Tablet Login Image"> 
+           <img src="../img/Tablet login-cuate.png" class="tablet-image" style="max-width:700px;"alt="Tablet Login Image"> 
         </div>
 
    

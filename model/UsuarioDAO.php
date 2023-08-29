@@ -43,7 +43,7 @@ class UsuarioDAO{
     }
 
     function obter($id){
-        $result = $this->con->query("SELECT * FROM usuarios WHERE (id_produto = " . $id . ");");
+        $result = $this->con->query("SELECT * FROM usuarios WHERE (id_usuario = " . $id . ");");
         if ($result->rowCount() > 0){
             
             $row = $result->fetch(PDO::FETCH_ASSOC);
@@ -77,7 +77,7 @@ class UsuarioDAO{
     }
 
     function obter_por_email($email){
-        $result = $this->con->query("SELECT * FROM usuarios WHERE (email = " . $email . ");");
+        $result = $this->con->query("SELECT * FROM usuarios WHERE (email = '" . $email . "');");
 
         $row = $result->fetch(PDO::FETCH_ASSOC);
 

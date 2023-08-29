@@ -30,7 +30,7 @@ if(isset($_POST['search'])){
         rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
         <script defer src="https://kit.fontawesome.com/0e01c81990.js" crossorigin="anonymous"></script>
-        
+        <script async src="../js/index.js"></script>
 
       
     </head>
@@ -40,15 +40,14 @@ if(isset($_POST['search'])){
         require "req_navbar.php" 
     ?>
  
-    <div class="carousel-container">
+ <div class="carousel-container">
         <div class="carousel-slide">
-            <img src="img/banner.png" alt="" class="banner_img">
+            <img src="../img/1.png" alt="" class="banner_img">
         </div>
         <div class="carousel-slide">
-            <img src="img/banner02.png" alt="" class="banner_img">
+            <img src="../img/2.png" alt="" class="banner_img">
         </div>
         
-      
         <a href="#" class="carousel-prev"><i class="fa-solid fa-chevron-right fa-rotate-180 fa-lg" style="color: #ffffff;"></i></a>
         <a href="#" class="carousel-next"><i class="fa-solid fa-chevron-right fa-lg" style="color: #ffffff;"></i></a>
     </div>
@@ -59,7 +58,7 @@ if(isset($_POST['search'])){
 
             echo"<div class='anuncio' id='".$anuncio->get_id_anuncio()."' onclick='pagAnunc(event)'>
                 <div class='img_anunc'>
-                    <img src='img/".$anuncio->get_img_princ()."' >
+                    <img src='../img/".$anuncio->get_img_princ()."' >
                 </div>
                 <span class='titulo_anunc'>".$anuncio->get_titulo_anuncio()."</span>
                 <span class='preco'>R$ ".number_format($anuncio->get_preco(), 2, ',', '.')."</span>

@@ -169,12 +169,14 @@ class ProdutoDAO{
             $p->set_video_integrado($row['video_integrado']);
             array_push($lista, $p);
         }
-
-        public function obter_vetor_atributos() {
-            return get_object_vars($this);
-        }
-
-        return $lista;
+        
+        return $lista;  
     }
+
+    public function obter_vetor_atributos() {
+        return get_object_vars($this);
+    }
+
+    
 }
 ?>

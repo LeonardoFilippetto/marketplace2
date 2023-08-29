@@ -141,7 +141,7 @@
 <?php echo $string_listagem; ?>
         </div>
         <div id="info">
-            <form action="" method="post" id="prox_et">
+            <form action="../controller/configuracao.php" method="post" id="prox_et">
 
                 <input type="hidden" name="subtotal_inicial" id="subtotal_inicial" value="R$<?php echo number_format($subtotal, 2, ',', '.'); ?>">
                 <input type="hidden" name="proxima_etapa" id="input_proxima_etapa" value="<?php echo $proxima_etapa; ?>">
