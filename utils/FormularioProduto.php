@@ -1,9 +1,9 @@
 <?php
 
-class FormularioProduto(){	
+class FormularioProduto{	
 	
-	public static function monta_formulario($anuncio){
-        if($anuncio->get_categoria_produto()=='placa_mae')
+	public static function monta_formulario($categoria){
+        if($categoria=='placa_mae')
             return '<div class="entrar-items">
                 <label for="fabricante">Fabricante:*</label>
                 <input type="text" id="fabricante" name="fabricante" placeholder="ASUS" required>
@@ -112,7 +112,7 @@ class FormularioProduto(){
 
 
 
-        if($anuncio->get_categoria_produto()=='processador')
+        if($categoria=='processador')
             return '<div class="entrar-items">
             <label for="fabricante">Fabricante:*</label>
             <select name="fabricante" id="fabricante" required>
@@ -167,7 +167,7 @@ class FormularioProduto(){
 
 
 
-        if($anuncio->get_categoria_produto()=='ram')
+        if($categoria=='ram')
             return '*Perguntar se é kit*
         <div class="entrar-items">
             <label for="fabricante">Fabricante:*</label>
@@ -210,7 +210,7 @@ class FormularioProduto(){
 
 
 
-        if($anuncio->get_categoria_produto()=='placa_video')
+        if($categoria=='placa_video')
             return '<div class="entrar-items">
             <label for="fabricante">Fabricante:*</label>
             <input type="text" id="fabricante" name="fabricante" placeholder="Nvidia" required>
@@ -250,7 +250,7 @@ class FormularioProduto(){
 
 
 
-        if($anuncio->get_categoria_produto()=='armazenamento')
+        if($categoria=='armazenamento')
             return '*adaptar barramento conforme o tipo*
         <div class="entrar-items">
             <label for="fabricante">Fabricante:*</label>
@@ -290,7 +290,7 @@ class FormularioProduto(){
 
 
 
-        if($anuncio->get_categoria_produto()=='gabinete')
+        if($categoria=='gabinete')
             return '<div class="entrar-items">
             <label for="fabricante">Fabricante:*</label>
             <input type="text" id="fabricante" name="fabricante" placeholder="TGT" required>
@@ -340,7 +340,7 @@ class FormularioProduto(){
 
 
 
-        if($anuncio->get_categoria_produto()=='fonte')
+        if($categoria=='fonte')
             return '<div class="entrar-items">
             <label for="fabricante">Fabricante:*</label>
             <input type="text" id="fabricante" name="fabricante" placeholder="Corsair" required>
@@ -383,7 +383,7 @@ class FormularioProduto(){
         </div>';
 
 
-        if($anuncio->get_categoria_produto()=='cooler')
+        if($categoria=='cooler')
             return '<div class="entrar-items">
             <label for="fabricante">Fabricante:*</label>
             <input type="text" id="fabricante" name="fabricante" placeholder="Deepcool" required>

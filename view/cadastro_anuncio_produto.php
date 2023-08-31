@@ -6,8 +6,8 @@ if(!isset($_SESSION['form_produto']))
 $form_produto=$_SESSION['form_produto'];
 $hidden_inputs=$_SESSION['hidden_inputs'];
 
-session_unset($_SESSION['form_produto']);
-session_unset($_SESSION['hidden_inputs']);
+unset($_SESSION['form_produto']);
+unset($_SESSION['hidden_inputs']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

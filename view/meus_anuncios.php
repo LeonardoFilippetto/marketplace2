@@ -40,7 +40,7 @@ $anuncios = $dao->obter_por_vendedor($_SESSION['id_usuario']);
                     </div>
                     <span class='titulo_anunc'>".$anuncio->get_titulo_anuncio()."</span>
                     <span class='preco'>R$ ".number_format($anuncio->get_preco(), 2, ',', '.')."</span>
-                    <form method='post' id='excluir' action='excluir_anuncio.php'>
+                    <form method='post' id='excluir' action='../controller/excluir_anuncio.php'>
                         <input type='hidden' name='excl' value='".$anuncio->get_id_anuncio()."'>
                         <input type='submit' value='EXCLUIR' class='btn_excluir' onclick='return confirm("."Tem certeza que quer excluir o anúncio?".");'>
                     </form>

@@ -3,7 +3,7 @@ $mensagem="";
 session_start();
 if(isset($_SESSION['login_err'])){
     $mensagem="Email ou senha inválidos!";
-    session_unset($_SESSION['login_err']);
+    unset($_SESSION['login_err']);
 }
 
 ?>

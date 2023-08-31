@@ -22,7 +22,7 @@ class AnuncioDAO{
 	}
 
 	function alterar($anuncio){
-		$result = $this->con->query("UPDATE anuncios SET id_vendedor = '" . $anuncio->get_id_vendedor() . "', titulo_anuncio = '" . $anuncio->get_titulo_anuncio() . "', categoria_produto = '" . $anuncio->get_categoria_anuncio() . "', preco = '" . $anuncio->get_preco() . "', estoque = '" . $anuncio->get_estoque() . "', img_princ = '" . $anuncio->get_img_princ() . "', imgs_sec = '" . $anuncio->get_imgs_sec() . "', descricao = '" . $anuncio->get_descicao() . "', informacoes_adicionais = '" . $anuncio->get_informacoes_adicionais() . "', ativo = '" . $anuncio->get_ativo() . "', vendas_registradas = '" . $anuncio->get_vendas_registradas() . "' WHERE (id_anuncio = " . $anuncio->get_id_anuncio(). ")");
+		$result = $this->con->query("UPDATE anuncios SET id_vendedor = '" . $anuncio->get_id_vendedor() . "', titulo_anuncio = '" . $anuncio->get_titulo_anuncio() . "', categoria_produto = '" . $anuncio->get_categoria_produto() . "', preco = '" . $anuncio->get_preco() . "', estoque = '" . $anuncio->get_estoque() . "', img_princ = '" . $anuncio->get_img_princ() . "', imgs_sec = '" . $anuncio->get_imgs_sec() . "', descricao = '" . $anuncio->get_descricao() . "', informacoes_adicionais = '" . $anuncio->get_informacoes_adicionais() . "', ativo = '" . $anuncio->get_ativo() . "', vendas_registradas = '" . $anuncio->get_vendas_registradas() . "' WHERE (id_anuncio = " . $anuncio->get_id_anuncio(). ")");
 
 		if ($result->rowCount() > 0){
    			return true;
@@ -881,5 +881,3 @@ class AnuncioDAO{
 		return $lista;
 	}
 }
-
-?>

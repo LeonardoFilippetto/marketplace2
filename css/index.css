@@ -7,7 +7,7 @@ nav.navbar {
 .navbar-toggler {}
 
 .navbar-toggler:hover {
-    background-color: #d8e0ff !important;
+    background-color: #0033ff !important;
     transition: 1s;
 }
 

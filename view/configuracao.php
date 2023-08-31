@@ -28,13 +28,13 @@
         $titulo_etapa=$_SESSION['titulo_etapa'];
         $subtotal=$_SESSION['subtotal'];
 
-        session_unset($_SESSION['etapa']);
-        session_unset($_SESSION['proxima_etapa']);
-        session_unset($_SESSION['restricoes']);
-        session_unset($_SESSION['max_quant_anunc']);
-        session_unset($_SESSION['string_listagem']);
-        session_unset($_SESSION['titulo_etapa']);
-        session_unset($_SESSION['subtotal']);
+        unset($_SESSION['etapa']);
+        unset($_SESSION['proxima_etapa']);
+        unset($_SESSION['restricoes']);
+        unset($_SESSION['max_quant_anunc']);
+        unset($_SESSION['string_listagem']);
+        unset($_SESSION['titulo_etapa']);
+        unset($_SESSION['subtotal']);
 
     }else{
         $string_listagem=Configuracao::monta_listagem($dao_a->obter_processador_configuracao());

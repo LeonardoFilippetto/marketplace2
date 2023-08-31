@@ -4,7 +4,7 @@ if(!isset($_SESSION['hidden_inputs']))
     header("Location:index.php");
 
 $hidden_inputs=$_SESSION['hidden_inputs'];
-session_unset($_SESSION['hidden_inputs']);
+unset($_SESSION['hidden_inputs']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
