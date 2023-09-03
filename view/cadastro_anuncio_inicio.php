@@ -84,10 +84,9 @@ if(!isset($_SESSION['id_usuario']))
                       <option value="9">9 meses</option>
                       <option value="10">10 meses</option>
                       <option value="11">11 meses</option>
-                      <option value="12">1 ano</option>
-                      <option value="24">2 anos</option>
-                      <option value="36">3 anos</option>
-                      <option value="37">Mais de três anos</option>
+                      <option value="12">1 a 2 anos</option>
+                      <option value="24">2 a 3 anos</option>
+                      <option value="36">Mais de três anos</option>
                     </select>
                     <p id="mens_tempo_uso" class="mens"></p>
                 </div>

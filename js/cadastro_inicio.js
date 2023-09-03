@@ -289,7 +289,7 @@ const handlePhone = (event) => {
 
 async function verificarEmailBd(email) {
     let httpRequest = new XMLHttpRequest();
-    let url = "ajax_verificar_email_bd.php?email=" + email;
+    let url = "http://localhost/marketplace2/controller/ajax_verificar_email_bd.php?email=" + email;
   
     let promise = new Promise((resolve, reject) => {
       httpRequest.onreadystatechange = function() {

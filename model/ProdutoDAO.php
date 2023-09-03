@@ -10,7 +10,7 @@ class ProdutoDAO{
     }
 
     function inserir($produto){
-        $result = $this->con->query("INSERT INTO produtos (id_anuncio, id_vendedor, altura, barramento_encaixe_armazenamento, barramento_encaixe_video, barramentos_ram, barramentos_video, comprimento, condicao, ean, fabricante, fab_comp, fator_forma, formato_gabinete, frequencia, largura, linha, modelo, max_ram, nucleos, potencia, quantidade_armazenamento, quantidade_pentes, ram_pente_individual, ram_placa_video, ram_total, resfriamento, soquete, selo_80_plus, suporta_sata, suporta_nvme, tempo_uso, tipo_armazenamento, tipo_ram, video_integrado) VALUES ('" . $produto->get_id_anuncio() . "', '" . $produto->get_id_vendedor() . "', '" . $produto->get_altura() . "', '" . $produto->get_barramento_encaixe_armazenamento() . "', '" . $produto->get_barramento_encaixe_video() . "', '" . $produto->get_barramentos_ram() . "', '" . $produto->get_barramentos_video() . ", " . $produto->get_comprimento() . "', '" . $produto->get_condicao() . "', '" . $produto->get_ean() . "', '" . $produto->get_fabricante() . "', '" . $produto->get_fab_comp() . "', '" . $produto->get_fator_forma() . "', '" . $produto->get_formato_gabinete() . "', '" . $produto->get_frequencia() . "', '" . $produto->get_largura() . "', '" . $produto->get_linha() . "', '" . $produto->get_modelo() . "', '" . $produto->get_max_ram() . "', '" . $produto->get_nucleos() . "', '" . $produto->get_potencia() . "', '" . $produto->get_quantidade_armazenamento() . "', '" . $produto->get_quantidade_pentes() . "', '" . $produto->get_ram_pente_individual() . "', '" . $produto->get_ram_placa_video() . "', '" . $produto->get_ram_total() . "', '" . $produto->get_resfriamento() . "', '" . $produto->get_soquete() . "', '" . $produto->get_selo_80_plus() . "', '" . $produto->get_suporta_sata() . "', '" . $produto->get_suporta_nvme() . "', '" . $produto->get_tempo_uso() . "', '" . $produto->get_tipo_armazenamento() . "', '" . $produto->get_tipo_ram() . "', '" . $produto->get_video_integrado() . "')");
+        $result = $this->con->query("INSERT INTO produtos (id_anuncio, id_vendedor, altura, barramento_encaixe_armazenamento, barramento_encaixe_video, barramentos_ram, barramentos_video, comprimento, condicao, ean, fabricante, fab_comp, fator_forma, formato_gabinete, frequencia, largura, linha, modelo, max_ram, nucleos, potencia, quantidade_armazenamento, quantidade_pentes, ram_pente_individual, ram_placa_video, ram_total, resfriamento, soquete, selo_80_plus, suporta_sata, suporta_nvme, tempo_uso, tipo_armazenamento, tipo_ram, video_integrado) VALUES ('" . $produto->get_id_anuncio() . "', '" . $produto->get_id_vendedor() . "', '" . $produto->get_altura() . "', '" . $produto->get_barramento_encaixe_armazenamento() . "', '" . $produto->get_barramento_encaixe_video() . "', '" . $produto->get_barramentos_ram() . "', '" . $produto->get_barramentos_video() . "', '" . $produto->get_comprimento() . "', '" . $produto->get_condicao() . "', '" . $produto->get_ean() . "', '" . $produto->get_fabricante() . "', '" . $produto->get_fab_comp() . "', '" . $produto->get_fator_forma() . "', '" . $produto->get_formato_gabinete() . "', '" . $produto->get_frequencia() . "', '" . $produto->get_largura() . "', '" . $produto->get_linha() . "', '" . $produto->get_modelo() . "', '" . $produto->get_max_ram() . "', '" . $produto->get_nucleos() . "', '" . $produto->get_potencia() . "', '" . $produto->get_quantidade_armazenamento() . "', '" . $produto->get_quantidade_pentes() . "', '" . $produto->get_ram_pente_individual() . "', '" . $produto->get_ram_placa_video() . "', '" . $produto->get_ram_total() . "', '" . $produto->get_resfriamento() . "', '" . $produto->get_soquete() . "', '" . $produto->get_selo_80_plus() . "', '" . $produto->get_suporta_sata() . "', '" . $produto->get_suporta_nvme() . "', '" . $produto->get_tempo_uso() . "', '" . $produto->get_tipo_armazenamento() . "', '" . $produto->get_tipo_ram() . "', '" . $produto->get_video_integrado() . "')");
 
         if ($result->rowCount() > 0){
    			return true;
@@ -79,7 +79,7 @@ class ProdutoDAO{
         $p->set_selo_80_plus($row['selo_80_plus']);
         $p->set_suporta_sata($row['suporta_sata']);
         $p->set_suporta_nvme($row['suporta_nvme']);
-        $p->set_tempo_uso($row['set_tempo_uso']);
+        $p->set_tempo_uso($row['tempo_uso']);
         $p->set_tipo_armazenamento($row['tipo_armazenamento']);
         $p->set_tipo_ram($row['tipo_ram']);
         $p->set_video_integrado($row['video_integrado']);
@@ -177,10 +177,6 @@ class ProdutoDAO{
         }
         
         return $lista;  
-    }
-
-    public function obter_vetor_atributos() {
-        return get_object_vars($this);
     }
 
     

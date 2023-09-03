@@ -17,7 +17,11 @@ $usuario->set_referencia($_POST['referencia']);
 
 $usuario->set_nome($_POST['nome']);
 $usuario->set_email($_POST['email']);
-$usuario->set_celular($_POST['celular']);
+$celular=str_replace('-', '', $_POST['celular']);
+$celular=str_replace('(', '', $celular);
+$celular=str_replace(')', '', $celular);
+$celular=str_replace(' ', '', $celular);
+$usuario->set_celular($celular);
 $usuario->set_data_nasc($_POST['data_nasc']);
 $usuario->set_senha($_POST['senha']);
 

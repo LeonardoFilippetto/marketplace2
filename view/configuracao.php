@@ -12,6 +12,7 @@
     $subtotal=0;
     $titulo_etapa='Processador';
     $max_quant_anunc=1;
+    $proxima_etapa='placa_mae';
 
     if(!isset($_SESSION['config'])){
         $_SESSION['config']=[];
@@ -37,6 +38,7 @@
         unset($_SESSION['subtotal']);
 
     }else{
+        unset($_SESSION['config']);
         $string_listagem=Configuracao::monta_listagem($dao_a->obter_processador_configuracao());
     }
 
@@ -90,7 +92,7 @@
                         }
                             if(!isset($_SESSION['id_usuario'])){
                     ?>
-                    <a class="nav-link" href="login.php"> <img src="img/do-utilizador.svg" alt="login" width="20px">Login</a>
+                    <a class="nav-link" href="login.php"> <img src="../img/do-utilizador.svg" alt="login" width="20px">Login</a>
                     <?php
                             }else{
                                 echo'<a class="nav-link" href="index.php?des">Sair</a>';
@@ -133,7 +135,7 @@
                     <div class="search-container">
                         <input type="text" placeholder="Buscar" name="search" id="busca">
                         <input type="hidden" name="etapa" value="<?php echo $etapa; ?>">
-                        <img src="img/procurar.svg" alt="" style="height:1rem; margin:0.2rem;" id="lupa">
+                        <img src="../img/procurar.svg" alt="" style="height:1rem; margin:0.2rem;" id="lupa">
                     </div>
                 </form>
 

@@ -431,7 +431,6 @@ class AnuncioDAO{
 	function obter_placa_video_configuracao($placa_mae, $busca=''){
 		$lista = [];
 
-
 		$vetor_barramentos=explode(',', $placa_mae->get_barramentos_video());
 		$verificacao_barramentos="";
 		foreach($vetor_barramentos as $barramento){
@@ -440,7 +439,7 @@ class AnuncioDAO{
 		$verificacao_barramentos=rtrim($verificacao_barramentos, " OR ");
 
 
-		$query_peca= "SELECT anuncios.*, produtos.barramento_encaixe_video AS barramento_encaixe_video FROM anuncios INNER JOIN produtos ON produtos.id_produto=anuncios.id_produto WHERE (anuncios.categoria_produto='placa_video' AND produtos.barramento_encaixe_video IS NOT NULL AND (".$verificacao_barramentos."))";
+		$query_peca= "SELECT anuncios.*, produtos.* FROM anuncios INNER JOIN produtos ON produtos.id_produto=anuncios.id_produto WHERE (anuncios.categoria_produto='placa_video' AND produtos.barramento_encaixe_video IS NOT NULL AND (".$verificacao_barramentos."))";
 
 		if($busca!=''){
 			$busca=strtolower($busca);
@@ -466,19 +465,19 @@ class AnuncioDAO{
 			$a = new Anuncio();
 			$p = new Produto();
 
-			$a ->set_id_anuncio($row['id_anuncio']);
-			$a ->set_id_produto($row['id_produto']);
-			$a ->set_id_vendedor($row['id_vendedor']);
-			$a ->set_titulo_anuncio($row['titulo_anuncio']);
-			$a ->set_categoria_produto($row['categoria_produto']);
-			$a ->set_preco($row['preco']);
-			$a ->set_estoque($row['estoque']);
-			$a ->set_img_princ($row['img_princ']);
-			$a ->set_imgs_sec(explode(",", $row['imgs_sec']));
-			$a ->set_descricao($row['descricao']);
-			$a ->set_informacoes_adicionais($row['informacoes_adicionais']);
-			$a ->set_ativo($row['ativo']);
-			$a ->set_vendas_registradas($row['vendas_registradas']);
+			$a->set_id_anuncio($row['id_anuncio']);
+			$a->set_id_produto($row['id_produto']);
+			$a->set_id_vendedor($row['id_vendedor']);
+			$a->set_titulo_anuncio($row['titulo_anuncio']);
+			$a->set_categoria_produto($row['categoria_produto']);
+			$a->set_preco($row['preco']);
+			$a->set_estoque($row['estoque']);
+			$a->set_img_princ($row['img_princ']);
+			$a->set_imgs_sec(explode(",", $row['imgs_sec']));
+			$a->set_descricao($row['descricao']);
+			$a->set_informacoes_adicionais($row['informacoes_adicionais']);
+			$a->set_ativo($row['ativo']);
+			$a->set_vendas_registradas($row['vendas_registradas']);
 
 			$p->set_id_produto($row['id_produto']);
 			$p->set_id_anuncio($row['id_anuncio']);

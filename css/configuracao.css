@@ -131,13 +131,11 @@ input[type=text] {
 .btn_retirar {
     background-color: #ff0000;
     opacity: 0;
-    cursor: default;
 }
 
 .btn_retirar:hover {
     background-color: #ff3737;
     transform: scale(1.05);
-    cursor: default;
 }
 
 .btn_adicionar {
@@ -151,4 +149,14 @@ input[type=text] {
 
 .icone {
     height: 1rem;
+}
+
+.disabled{
+    background-color: #727272;
+    cursor: default;
+}
+
+.disabled:hover {
+    background-color: #727272;
+    transform: scale(1);
 }

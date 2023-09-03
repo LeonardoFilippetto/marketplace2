@@ -30,7 +30,7 @@ $nome_imgs=time().random_string(24);
 $nome_img_princ=$nome_imgs.".".$extension;
 
 $_FILES['img_princ']['name'] = $nome_img_princ;
-$uploaddir = 'C:/xampp/htdocs/marketplace2-main/img/';
+$uploaddir = 'D:/xampp/htdocs/marketplace2/img/';
 $uploadfile = $uploaddir.$_FILES['img_princ']['name'];
 move_uploaded_file($_FILES['img_princ']['tmp_name'], $uploadfile);
 
@@ -101,6 +101,8 @@ foreach ($_POST as $chave => $valor){
         $produto->$setter($valor);
     }elseif(method_exists($anuncio, $setter)){
         $anuncio->$setter($valor);
+    }else{
+        echo'<script>alert("ERRO!!!!!!!!")</script>';
     }
 }
 

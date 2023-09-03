@@ -356,5 +356,10 @@ class Produto
 	function get_video_integrado(){
 		return $this->video_integrado;
 	}
+
+	public function obter_vetor_atributos() {
+        return get_object_vars($this);
+    }
+
 }
 ?>

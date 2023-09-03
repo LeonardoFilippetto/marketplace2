@@ -1,14 +1,25 @@
+<?php 
+session_start();
+session_destroy();
+$input_pag_ant="";
+if(isset($_POST['pagina_anterior'])){
+    $pagina_anterior=$_POST['pagina_anterior'];
+    $input_pag_ant='<input type="hidden" name="pagina_anterior" value="'.$pagina_anterior.'">';
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/cadastro.css">
+    <link rel="stylesheet" type="text/css" href="css/cadastro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-... (hash)" crossorigin="anonymous" referrerpolicy="no-referrer">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/cadastro.css">
-    <title>Cadastro de Usuário</title>
-    <script defer src="../js/cadastro_inicio.js"></script>
+    <title>Dados do vendedor</title>
+    <script defer src="js/cadastro_inicio.js"></script>
   
     <style>
         form{
@@ -20,7 +31,7 @@
 <header>
     <a class="btn-voltar" href="login.php"> <h1><i class="fa-solid fa-arrow-left fa-lx" style="color: #ffffff;"></i> Voltar</h1></a>
 </header>
-    <form method="POST" action="../controller/transicao_cadastro_usuario.php" id="form_cpf" style="display:block">
+    <form method="POST" action="cadastro_final.php" id="form_cpf" style="display:block">
         <div class="cadastre-se">
             <h1>Informações pessoais</h1>
             <div class="tipo_usuario">
@@ -69,12 +80,13 @@
                     <p id="fis_mens_data_nasc" class="mens"></p>
                 </div>
                 <p style="font-size:10px; color:#a6a6a6;" name="camp_obr">(*) - Campos obrigatórios</p><br>
-                <div class="btn-cad justify"><input type="submit" id="submit_fis" value="Prosseguir"></div>
+                <?php echo $input_pag_ant ?>
+                <div class="btn-cad justify"><input type="submit" id="submit_fis" value="Cadastrar"></div>
             </div>
         </div>
     </form>
 
-    <form method="POST" action="../controller/transicao_cadastro_usuario.php" id="form_cnpj" style="display:none">
+    <form method="POST" action="cadastro_final.php" id="form_cnpj" style="display:none">
         <div class="cadastre-se">
             <h1>Informações institucionais</h1>
             <div class="tipo_usuario">
@@ -147,6 +159,7 @@
                     <p id="jur_mens_data_nasc" class="mens"></p>
                 </div>
                 <p style="font-size:10px; color:#a6a6a6;" name="camp_obr">(*) - Campos obrigatórios</p><br>
+                <?php echo $input_pag_ant ?>
                 <div class="btn-cad justify"><input type="submit" id="submit_jur" value="Prosseguir"></div>
             </div> 
         </div>

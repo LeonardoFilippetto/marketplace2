@@ -94,15 +94,15 @@ $usuario = $dao_u->obter($anuncio->get_id_vendedor());
 
         <div id="info_secundaria">
             <div id="descricao" class="secao">
-                <h3 class='titulo_secao'><img src="img/icons/documento-de-texto.png" alt="">Descrição do produto</h3>
+                <h3 class='titulo_secao'><img src="../img/icons/documento-de-texto.png" alt="">Descrição do produto</h3>
                 <p class='p_secao'><?php echo $anuncio->get_descricao(); ?></p>
             </div>
             <div id="especific_tec" class="secao">
-                <h3 class='titulo_secao'><img src="img/icons/info.png" alt="">Especificações técnicas</h3>
+                <h3 class='titulo_secao'><img src="../img/icons/info.png" alt="">Especificações técnicas</h3>
                 <p class='p_secao'><?php echo Especificacoes::monta_especificacoes($produto) ?></p>
             </div>
             <div id="info_adic" class="secao">
-                <h3 class='titulo_secao'><img src="img/icons/adicionar-ficheiro.png" alt="">Informações adicionais</h3>
+                <h3 class='titulo_secao'><img src="../img/icons/adicionar-ficheiro.png" alt="">Informações adicionais</h3>
                 <p class='p_secao'><?php echo $anuncio->get_informacoes_adicionais() ?></p>
             </div>
         </div>

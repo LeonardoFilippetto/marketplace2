@@ -22,24 +22,24 @@ class Configuracao{
                 }
                 
                 
-                if($anuncio->get_categoria_produto()=='ram'||get_categoria_produto()=='armazenamento'){
+                if($anuncio->get_categoria_produto()=='ram'||$anuncio->get_categoria_produto()=='armazenamento'){
                     //$pentes=$row['quantidade_pentes'];
                     //$ram_total=$row['ram_total'];
     
                     $string_listagem.="<div class='anuncio anuncio_lista' id='".$id_anunc."' onclick='pagAnunc(event)'>".$string_propriedades."
                     <div class='img_anunc img_anunc_lista'>
-                        <img src='img/".$img_princ."' >
+                        <img src='../img/".$img_princ."' >
                     </div>
                     <span class='titulo_anunc titulo_anunc_lista'>$nome_prod</span>
                     <span id='preco_".$id_anunc."' class='preco preco_lista'>R$ ".number_format($preco, 2, ',', '.')."</span>
-                    <div class='container_botoes'><button disabled class='btn_selecionar btn_retirar' id='retirar_".$id_anunc."'><img class='icone' src='img/icons/menos.png'></button><button class='btn_selecionar btn_adicionar' id='adicionar_".$id_anunc."'><img class='icone' src='img/icons/mais.png'></button></div>
+                    <div class='container_botoes'><button disabled class='btn_selecionar btn_retirar disabled' id='retirar_".$id_anunc."' onclick='retirar_ram(this)'><img class='icone' src='../img/icons/menos.png'></button><button class='btn_selecionar btn_adicionar' id='adicionar_".$id_anunc."' onclick='adicionar_ram(this)'><img class='icone' src='../img/icons/mais.png'></button></div>
                     </div>";
                     
                 }else{
                     $string_listagem.="<div class='anuncio' id='".$id_anunc."' onclick='pagAnunc(event)'>".$string_propriedades."
                     <input type='checkbox' id='check_".$id_anunc."' onchange='selecionarPeca(this)'>
                     <div class='img_anunc'>
-                        <img src='img/".$img_princ."' >
+                        <img src='../img/".$img_princ."' >
                     </div>
                     <span class='titulo_anunc'>$nome_prod</span>
                     <span id='preco_".$id_anunc."' class='preco'>R$ ".number_format($preco, 2, ',', '.')."</span>
