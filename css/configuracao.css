@@ -44,8 +44,9 @@ nav h1 {
 .search-container {
     float: right;
     border-radius: 10px;
-    background-color: #ff0000;
+    background-color: #ffffff;
     padding: 0.2rem;
+    border: 1px solid black
 }
 
 
@@ -54,7 +55,7 @@ input[type=text] {
     font-size: 1rem;
     border: none;
     border-radius: 30px;
-    background-color: #ff0000;
+    background-color: #ffffff;
     color: #363636;
     text-align: left;
 
