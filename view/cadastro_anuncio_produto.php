@@ -37,6 +37,11 @@ unset($_SESSION['hidden_inputs']);
                     <p id="mens_ean" class="mens"></p>
                 </div>
                 <?php echo $form_produto.$hidden_inputs; ?>
+                <div class="entrar-items">
+                  <label for="consumo_energia">Consumo de energia estimado (Watts):*</label>
+                    <input type="number" placeholder="100" id="consumo_energia" name="consumo_energia" required>
+                    <p id="mens_consumo_energia" class="mens"></p>
+                </div>
                 <p style="font-size:12px; color:#a6a6a6;">(*) - Campos obrigatórios</p><br>
                 <div class="btn-cad justify"><input type="submit" value="Prosseguir"></div>
             </div>

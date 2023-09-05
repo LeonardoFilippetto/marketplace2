@@ -11,6 +11,7 @@ class Produto
 	private $barramentos_video;
 	private $comprimento;
 	private $condicao;
+	private $consumo_energia;
 	private $ean;
 	private $fabricante;
 	private $fab_comp;
@@ -19,6 +20,7 @@ class Produto
 	private $frequencia;
 	private $largura;
 	private $linha;
+	private $litografia;
 	private $modelo;
 	private $max_ram;
 	private $nucleos;
@@ -34,6 +36,7 @@ class Produto
 	private $suporta_sata;
 	private $suporta_nvme;
 	private $tempo_uso;
+	private $threads;
 	private $tipo_armazenamento;
 	private $tipo_ram;
 	private $video_integrado;
@@ -124,6 +127,15 @@ class Produto
 		return $this->condicao;
 	}
 
+	// Métodos para atributo consumo_energia
+	function set_consumo_energia($consumo_energia){
+		$this->consumo_energia = $consumo_energia;
+	}
+
+	function get_consumo_energia(){
+		return $this->consumo_energia;
+	}
+
 	// Métodos para atributo ean
 	function set_ean($ean){
 		$this->ean = $ean;
@@ -193,6 +205,15 @@ class Produto
 
 	function get_linha(){
 		return $this->linha;
+	}
+
+	// Métodos para atributo litografia
+	function set_litografia($litografia){
+		$this->litografia = $litografia;
+	}
+
+	function get_litografia(){
+		return $this->litografia;
 	}
 
 	// Métodos para atributo modelo
@@ -328,6 +349,15 @@ class Produto
 
 	function get_tempo_uso(){
 		return $this->tempo_uso;
+	}
+
+	// Métodos para atributo threads
+	function set_threads($threads){
+		$this->threads = $threads;
+	}
+
+	function get_threads(){
+		return $this->threads;
 	}
 
 	// Métodos para atributo tipo_armazenamento

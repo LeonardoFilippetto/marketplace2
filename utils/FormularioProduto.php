@@ -157,6 +157,16 @@ class FormularioProduto{
             <p id="mens_nucleos" class="mens"></p>
         </div>
         <div class="entrar-items">
+            <label for="threads">Quantidade de threads:*</label>
+            <input type="number" id="threads" name="threads" placeholder="16" required>
+            <p id="mens_threads" class="mens"></p>
+        </div>
+        <div class="entrar-items">
+            <label for="litografia">Litografia (Nanômetros):*</label>
+            <input type="number" id="litografia" name="litografia" placeholder="16" required>
+            <p id="mens_litografia" class="mens"></p>
+        </div>
+        <div class="entrar-items">
             <label>GPU integrada:*</label>
             <div class="checkbox">
             <input type="checkbox" id="gpu" name="video_integrado" value="1"> <label for="gpu">Possui GPU integrada</label><br>

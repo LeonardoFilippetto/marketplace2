@@ -227,6 +227,8 @@ class AnuncioDAO{
 			$p->set_barramentos_ram($row['barramentos_ram']);
 			$p->set_barramentos_video($row['barramentos_video']);
 			$p->set_comprimento($row['comprimento']);
+			$p->set_condicao($row['condicao']);
+			$p->set_consumo_energia($row['consumo_energia']);
 			$p->set_ean($row['ean']);
 			$p->set_fabricante($row['fabricante']);
 			$p->set_fab_comp($row['fab_comp']);
@@ -235,6 +237,7 @@ class AnuncioDAO{
 			$p->set_frequencia($row['frequencia']);
 			$p->set_largura($row['largura']);
 			$p->set_linha($row['linha']);
+			$p->set_litografia($row['litografia']);
 			$p->set_modelo($row['modelo']);
 			$p->set_max_ram($row['max_ram']);
 			$p->set_nucleos($row['nucleos']);
@@ -249,6 +252,8 @@ class AnuncioDAO{
 			$p->set_selo_80_plus($row['selo_80_plus']);
 			$p->set_suporta_sata($row['suporta_sata']);
 			$p->set_suporta_nvme($row['suporta_nvme']);
+			$p->set_tempo_uso($row['tempo_uso']);
+			$p->set_threads($row['threads']);
 			$p->set_tipo_armazenamento($row['tipo_armazenamento']);
 			$p->set_tipo_ram($row['tipo_ram']);
 			$p->set_video_integrado($row['video_integrado']);
@@ -311,6 +316,8 @@ class AnuncioDAO{
 			$p->set_barramentos_ram($row['barramentos_ram']);
 			$p->set_barramentos_video($row['barramentos_video']);
 			$p->set_comprimento($row['comprimento']);
+			$p->set_condicao($row['condicao']);
+			$p->set_consumo_energia($row['consumo_energia']);
 			$p->set_ean($row['ean']);
 			$p->set_fabricante($row['fabricante']);
 			$p->set_fab_comp($row['fab_comp']);
@@ -319,6 +326,7 @@ class AnuncioDAO{
 			$p->set_frequencia($row['frequencia']);
 			$p->set_largura($row['largura']);
 			$p->set_linha($row['linha']);
+			$p->set_litografia($row['litografia']);
 			$p->set_modelo($row['modelo']);
 			$p->set_max_ram($row['max_ram']);
 			$p->set_nucleos($row['nucleos']);
@@ -333,6 +341,8 @@ class AnuncioDAO{
 			$p->set_selo_80_plus($row['selo_80_plus']);
 			$p->set_suporta_sata($row['suporta_sata']);
 			$p->set_suporta_nvme($row['suporta_nvme']);
+			$p->set_tempo_uso($row['tempo_uso']);
+			$p->set_threads($row['threads']);
 			$p->set_tipo_armazenamento($row['tipo_armazenamento']);
 			$p->set_tipo_ram($row['tipo_ram']);
 			$p->set_video_integrado($row['video_integrado']);
@@ -395,6 +405,8 @@ class AnuncioDAO{
 			$p->set_barramentos_ram($row['barramentos_ram']);
 			$p->set_barramentos_video($row['barramentos_video']);
 			$p->set_comprimento($row['comprimento']);
+			$p->set_condicao($row['condicao']);
+			$p->set_consumo_energia($row['consumo_energia']);
 			$p->set_ean($row['ean']);
 			$p->set_fabricante($row['fabricante']);
 			$p->set_fab_comp($row['fab_comp']);
@@ -403,6 +415,7 @@ class AnuncioDAO{
 			$p->set_frequencia($row['frequencia']);
 			$p->set_largura($row['largura']);
 			$p->set_linha($row['linha']);
+			$p->set_litografia($row['litografia']);
 			$p->set_modelo($row['modelo']);
 			$p->set_max_ram($row['max_ram']);
 			$p->set_nucleos($row['nucleos']);
@@ -417,6 +430,8 @@ class AnuncioDAO{
 			$p->set_selo_80_plus($row['selo_80_plus']);
 			$p->set_suporta_sata($row['suporta_sata']);
 			$p->set_suporta_nvme($row['suporta_nvme']);
+			$p->set_tempo_uso($row['tempo_uso']);
+			$p->set_threads($row['threads']);
 			$p->set_tipo_armazenamento($row['tipo_armazenamento']);
 			$p->set_tipo_ram($row['tipo_ram']);
 			$p->set_video_integrado($row['video_integrado']);
@@ -488,6 +503,8 @@ class AnuncioDAO{
 			$p->set_barramentos_ram($row['barramentos_ram']);
 			$p->set_barramentos_video($row['barramentos_video']);
 			$p->set_comprimento($row['comprimento']);
+			$p->set_condicao($row['condicao']);
+			$p->set_consumo_energia($row['consumo_energia']);
 			$p->set_ean($row['ean']);
 			$p->set_fabricante($row['fabricante']);
 			$p->set_fab_comp($row['fab_comp']);
@@ -496,6 +513,7 @@ class AnuncioDAO{
 			$p->set_frequencia($row['frequencia']);
 			$p->set_largura($row['largura']);
 			$p->set_linha($row['linha']);
+			$p->set_litografia($row['litografia']);
 			$p->set_modelo($row['modelo']);
 			$p->set_max_ram($row['max_ram']);
 			$p->set_nucleos($row['nucleos']);
@@ -510,6 +528,8 @@ class AnuncioDAO{
 			$p->set_selo_80_plus($row['selo_80_plus']);
 			$p->set_suporta_sata($row['suporta_sata']);
 			$p->set_suporta_nvme($row['suporta_nvme']);
+			$p->set_tempo_uso($row['tempo_uso']);
+			$p->set_threads($row['threads']);
 			$p->set_tipo_armazenamento($row['tipo_armazenamento']);
 			$p->set_tipo_ram($row['tipo_ram']);
 			$p->set_video_integrado($row['video_integrado']);
@@ -582,6 +602,8 @@ class AnuncioDAO{
 			$p->set_barramentos_ram($row['barramentos_ram']);
 			$p->set_barramentos_video($row['barramentos_video']);
 			$p->set_comprimento($row['comprimento']);
+			$p->set_condicao($row['condicao']);
+			$p->set_consumo_energia($row['consumo_energia']);
 			$p->set_ean($row['ean']);
 			$p->set_fabricante($row['fabricante']);
 			$p->set_fab_comp($row['fab_comp']);
@@ -590,6 +612,7 @@ class AnuncioDAO{
 			$p->set_frequencia($row['frequencia']);
 			$p->set_largura($row['largura']);
 			$p->set_linha($row['linha']);
+			$p->set_litografia($row['litografia']);
 			$p->set_modelo($row['modelo']);
 			$p->set_max_ram($row['max_ram']);
 			$p->set_nucleos($row['nucleos']);
@@ -604,6 +627,8 @@ class AnuncioDAO{
 			$p->set_selo_80_plus($row['selo_80_plus']);
 			$p->set_suporta_sata($row['suporta_sata']);
 			$p->set_suporta_nvme($row['suporta_nvme']);
+			$p->set_tempo_uso($row['tempo_uso']);
+			$p->set_threads($row['threads']);
 			$p->set_tipo_armazenamento($row['tipo_armazenamento']);
 			$p->set_tipo_ram($row['tipo_ram']);
 			$p->set_video_integrado($row['video_integrado']);
@@ -667,6 +692,8 @@ class AnuncioDAO{
 			$p->set_barramentos_ram($row['barramentos_ram']);
 			$p->set_barramentos_video($row['barramentos_video']);
 			$p->set_comprimento($row['comprimento']);
+			$p->set_condicao($row['condicao']);
+			$p->set_consumo_energia($row['consumo_energia']);
 			$p->set_ean($row['ean']);
 			$p->set_fabricante($row['fabricante']);
 			$p->set_fab_comp($row['fab_comp']);
@@ -675,6 +702,7 @@ class AnuncioDAO{
 			$p->set_frequencia($row['frequencia']);
 			$p->set_largura($row['largura']);
 			$p->set_linha($row['linha']);
+			$p->set_litografia($row['litografia']);
 			$p->set_modelo($row['modelo']);
 			$p->set_max_ram($row['max_ram']);
 			$p->set_nucleos($row['nucleos']);
@@ -689,6 +717,8 @@ class AnuncioDAO{
 			$p->set_selo_80_plus($row['selo_80_plus']);
 			$p->set_suporta_sata($row['suporta_sata']);
 			$p->set_suporta_nvme($row['suporta_nvme']);
+			$p->set_tempo_uso($row['tempo_uso']);
+			$p->set_threads($row['threads']);
 			$p->set_tipo_armazenamento($row['tipo_armazenamento']);
 			$p->set_tipo_ram($row['tipo_ram']);
 			$p->set_video_integrado($row['video_integrado']);
@@ -762,6 +792,8 @@ class AnuncioDAO{
 			$p->set_barramentos_ram($row['barramentos_ram']);
 			$p->set_barramentos_video($row['barramentos_video']);
 			$p->set_comprimento($row['comprimento']);
+			$p->set_condicao($row['condicao']);
+			$p->set_consumo_energia($row['consumo_energia']);
 			$p->set_ean($row['ean']);
 			$p->set_fabricante($row['fabricante']);
 			$p->set_fab_comp($row['fab_comp']);
@@ -770,6 +802,7 @@ class AnuncioDAO{
 			$p->set_frequencia($row['frequencia']);
 			$p->set_largura($row['largura']);
 			$p->set_linha($row['linha']);
+			$p->set_litografia($row['litografia']);
 			$p->set_modelo($row['modelo']);
 			$p->set_max_ram($row['max_ram']);
 			$p->set_nucleos($row['nucleos']);
@@ -784,6 +817,8 @@ class AnuncioDAO{
 			$p->set_selo_80_plus($row['selo_80_plus']);
 			$p->set_suporta_sata($row['suporta_sata']);
 			$p->set_suporta_nvme($row['suporta_nvme']);
+			$p->set_tempo_uso($row['tempo_uso']);
+			$p->set_threads($row['threads']);
 			$p->set_tipo_armazenamento($row['tipo_armazenamento']);
 			$p->set_tipo_ram($row['tipo_ram']);
 			$p->set_video_integrado($row['video_integrado']);
@@ -847,6 +882,8 @@ class AnuncioDAO{
 			$p->set_barramentos_ram($row['barramentos_ram']);
 			$p->set_barramentos_video($row['barramentos_video']);
 			$p->set_comprimento($row['comprimento']);
+			$p->set_condicao($row['condicao']);
+			$p->set_consumo_energia($row['consumo_energia']);
 			$p->set_ean($row['ean']);
 			$p->set_fabricante($row['fabricante']);
 			$p->set_fab_comp($row['fab_comp']);
@@ -855,6 +892,7 @@ class AnuncioDAO{
 			$p->set_frequencia($row['frequencia']);
 			$p->set_largura($row['largura']);
 			$p->set_linha($row['linha']);
+			$p->set_litografia($row['litografia']);
 			$p->set_modelo($row['modelo']);
 			$p->set_max_ram($row['max_ram']);
 			$p->set_nucleos($row['nucleos']);
@@ -869,6 +907,8 @@ class AnuncioDAO{
 			$p->set_selo_80_plus($row['selo_80_plus']);
 			$p->set_suporta_sata($row['suporta_sata']);
 			$p->set_suporta_nvme($row['suporta_nvme']);
+			$p->set_tempo_uso($row['tempo_uso']);
+			$p->set_threads($row['threads']);
 			$p->set_tipo_armazenamento($row['tipo_armazenamento']);
 			$p->set_tipo_ram($row['tipo_ram']);
 			$p->set_video_integrado($row['video_integrado']);
