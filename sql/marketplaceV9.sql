@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 05-Set-2023 às 23:23
+-- Tempo de geração: 06-Set-2023 às 03:22
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.4
 
@@ -55,7 +55,7 @@ INSERT INTO `anuncios` (`id_anuncio`, `id_produto`, `id_vendedor`, `titulo_anunc
 (5, 6, 1, 'HD Seagate Barracuda 1TB', 'armazenamento', 240.00, 5, '1682260367yPFu5lVmNSzOSpg14Prn03m5.jpeg', '1682260367yPFu5lVmNSzOSpg14Prn03m5_0.jpeg', 'descr', 'inf', 1, NULL),
 (6, 7, 1, 'Gabinete TGT Erion Mid Tower', 'gabinete', 200.00, 6, '1682260579nfDM5wuDvfIoUQlRO73ScfEm.jpeg', '1682260579nfDM5wuDvfIoUQlRO73ScfEm_0.jpeg', 'descr', 'aaaa', 1, NULL),
 (7, 8, 1, 'Fonte de Alimentação Corsair 550CV 550W', 'fonte', 300.00, 9, '1682260751HB9pbPuoIBSatneomBMTWMGE.jpeg', '1682260751HB9pbPuoIBSatneomBMTWMGE_0.jpeg', 'ddd', 'eee', 1, NULL),
-(8, 9, 1, 'Liquid Cooler DeepCool LE520', 'cooler', 500.00, 3, '1682261045q7CYGccUdtQWYejNMT8z6SMy.jpeg', 'Array', 'asd', 'asda', 1, 0);
+(8, 9, 1, 'Liquid Cooler DeepCool LE520', 'cooler', 500.00, 3, '1682261045q7CYGccUdtQWYejNMT8z6SMy.jpeg', '1682261045q7CYGccUdtQWYejNMT8z6SMy_0.jpeg', 'asd', 'asda', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -224,7 +224,7 @@ CREATE TABLE `produtos` (
   `barramentos_ram` int(11) DEFAULT NULL,
   `barramentos_video` varchar(100) DEFAULT NULL,
   `comprimento` int(11) DEFAULT NULL,
-  `condicao` varchar(5) DEFAULT NULL,
+  `condicao` varchar(5) NOT NULL,
   `consumo_energia` int(5) DEFAULT NULL,
   `ean` varchar(13) DEFAULT NULL,
   `fabricante` varchar(45) DEFAULT NULL,
@@ -234,6 +234,7 @@ CREATE TABLE `produtos` (
   `frequencia` int(11) DEFAULT NULL,
   `largura` int(11) DEFAULT NULL,
   `linha` varchar(50) DEFAULT NULL,
+  `litografia` int(3) DEFAULT NULL,
   `modelo` varchar(100) DEFAULT NULL,
   `max_ram` int(11) DEFAULT NULL,
   `nucleos` int(11) DEFAULT NULL,
@@ -249,6 +250,7 @@ CREATE TABLE `produtos` (
   `suporta_sata` tinyint(1) DEFAULT NULL,
   `suporta_nvme` tinyint(1) DEFAULT NULL,
   `tempo_uso` varchar(10) DEFAULT NULL,
+  `threads` int(3) DEFAULT NULL,
   `tipo_armazenamento` varchar(5) DEFAULT NULL,
   `tipo_ram` varchar(20) DEFAULT NULL,
   `video_integrado` tinyint(1) DEFAULT NULL
@@ -258,16 +260,15 @@ CREATE TABLE `produtos` (
 -- Extraindo dados da tabela `produtos`
 --
 
-INSERT INTO `produtos` (`id_produto`, `id_anuncio`, `id_vendedor`, `altura`, `barramento_encaixe_armazenamento`, `barramento_encaixe_video`, `barramentos_ram`, `barramentos_video`, `comprimento`, `condicao`, `consumo_energia`, `ean`, `fabricante`, `fab_comp`, `fator_forma`, `formato_gabinete`, `frequencia`, `largura`, `linha`, `modelo`, `max_ram`, `nucleos`, `potencia`, `quantidade_armazenamento`, `quantidade_pentes`, `ram_pente_individual`, `ram_placa_video`, `ram_total`, `resfriamento`, `soquete`, `selo_80_plus`, `suporta_sata`, `suporta_nvme`, `tempo_uso`, `tipo_armazenamento`, `tipo_ram`, `video_integrado`) VALUES
-(1, 1, 1, NULL, NULL, 'x16', NULL, NULL, NULL, 'novo', NULL, '1111111111111', 'Nvidia', NULL, NULL, NULL, 1800, NULL, NULL, 'RTX 3090', NULL, NULL, NULL, NULL, NULL, NULL, 16, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL),
-(3, 2, 1, NULL, NULL, NULL, 4, 'x16', NULL, 'novo', NULL, '1111111111111', 'ASUS', 'intel', 'atx', NULL, 3666, NULL, NULL, 'ROG STRIX Z490-A GAMING', 256, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'LGA1200', NULL, 1, 1, '0', NULL, 'DDR4', NULL),
-(4, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL, 'novo', NULL, '1111111111112', 'Intel', NULL, NULL, NULL, 3800, NULL, 'i7', 'Core i7-10700K', NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'LGA1200', NULL, NULL, NULL, '0', NULL, NULL, 0),
-(5, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL, 'novo', NULL, '2222222222222', 'HyperX', NULL, NULL, NULL, 3666, NULL, NULL, 'Fury', NULL, NULL, NULL, NULL, 1, 16, NULL, 16, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'DDR4', NULL),
-(6, 5, 1, NULL, 'sata', NULL, NULL, NULL, NULL, 'novo', NULL, '3333333333333', 'Seagate', NULL, NULL, NULL, NULL, NULL, NULL, 'Barracuda', NULL, NULL, NULL, 1000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', 'SSD', NULL, NULL),
-(7, 6, 1, 410, NULL, NULL, NULL, NULL, 330, 'novo', NULL, '9999999999999', 'TGT', NULL, 'atx', 'mid', NULL, 180, NULL, 'Erion', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL),
-(8, 7, 1, NULL, NULL, NULL, NULL, NULL, NULL, 'novo', NULL, '7777777777777', 'Corsair', NULL, 'atx', NULL, NULL, NULL, NULL, 'CV550', NULL, NULL, 550, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'bronze', NULL, NULL, '0', NULL, NULL, NULL),
-(9, 8, 1, 6, NULL, NULL, NULL, NULL, 120, 'novo', NULL, '8888888888888', 'DeepCool', NULL, NULL, NULL, NULL, 300, NULL, 'LE520', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'liquid', NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL),
-(10, 13, 1, 0, '', 'x16', 0, '', 0, 'novo', NULL, '2222222222222', '2', '', '', '', 2, 0, '', '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '', 0, 0, '', '', '', 0);
+INSERT INTO `produtos` (`id_produto`, `id_anuncio`, `id_vendedor`, `altura`, `barramento_encaixe_armazenamento`, `barramento_encaixe_video`, `barramentos_ram`, `barramentos_video`, `comprimento`, `condicao`, `consumo_energia`, `ean`, `fabricante`, `fab_comp`, `fator_forma`, `formato_gabinete`, `frequencia`, `largura`, `linha`, `litografia`, `modelo`, `max_ram`, `nucleos`, `potencia`, `quantidade_armazenamento`, `quantidade_pentes`, `ram_pente_individual`, `ram_placa_video`, `ram_total`, `resfriamento`, `soquete`, `selo_80_plus`, `suporta_sata`, `suporta_nvme`, `tempo_uso`, `threads`, `tipo_armazenamento`, `tipo_ram`, `video_integrado`) VALUES
+(1, 1, 1, NULL, NULL, 'x16', NULL, NULL, NULL, 'novo', NULL, '1111111111111', 'Nvidia', NULL, NULL, NULL, 1800, NULL, NULL, NULL, 'RTX 3090', NULL, NULL, NULL, NULL, NULL, NULL, 16, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL),
+(3, 2, 1, NULL, NULL, NULL, 4, 'x16', NULL, 'novo', NULL, '1111111111111', 'ASUS', 'intel', 'atx', NULL, 3666, NULL, NULL, NULL, 'ROG STRIX Z490-A GAMING', 256, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'LGA1200', NULL, 1, 1, '0', NULL, NULL, 'DDR4', NULL),
+(4, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL, 'novo', NULL, '1111111111112', 'Intel', NULL, NULL, NULL, 3800, NULL, 'i7', NULL, 'Core i7-10700K', NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'LGA1200', NULL, NULL, NULL, '0', NULL, NULL, NULL, 0),
+(5, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL, 'novo', NULL, '2222222222222', 'HyperX', NULL, NULL, NULL, 3666, NULL, NULL, NULL, 'Fury', NULL, NULL, NULL, NULL, 1, 16, NULL, 16, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, 'DDR4', NULL),
+(6, 5, 1, NULL, 'sata', NULL, NULL, NULL, NULL, 'novo', NULL, '3333333333333', 'Seagate', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Barracuda', NULL, NULL, NULL, 1000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'SSD', NULL, NULL),
+(7, 6, 1, 410, NULL, NULL, NULL, NULL, 330, 'novo', NULL, '9999999999999', 'TGT', NULL, 'atx', 'mid', NULL, 180, NULL, NULL, 'Erion', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL),
+(8, 7, 1, NULL, NULL, NULL, NULL, NULL, NULL, 'novo', NULL, '7777777777777', 'Corsair', NULL, 'atx', NULL, NULL, NULL, NULL, NULL, 'CV550', NULL, NULL, 550, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'bronze', NULL, NULL, '0', NULL, NULL, NULL, NULL),
+(9, 8, 1, 6, NULL, NULL, NULL, NULL, 120, 'novo', NULL, '8888888888888', 'DeepCool', NULL, NULL, NULL, NULL, 300, NULL, NULL, 'LE520', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'liquid', NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -302,7 +303,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `cpf`, `cnpj`, `data_nasc`, `celular`, `email`, `senha`, `nome`, `razao_social`, `tributo`, `nome_fantasia`, `telefone_empresa`, `cep`, `logradouro`, `numero`, `complemento`, `bairro`, `cidade`, `referencia`) VALUES
-(1, '48425476852', NULL, '2006-01-05', '11111111111', 'filippettoleonardo@gmail.com', '$2y$12$zgwPTCrYSsxV5anaiKfKaeRc0yCDJw7.Dcshkt/pncHC67BXFHJcG', 'Leonardo Filippetto', NULL, NULL, NULL, NULL, '11111111', 'rua dos aimorés', '480', 'Apto. P13', 'Vila Costa e Silva', 'Campinas', 'ao lado do mercado Dia');
+(1, '48425476852', NULL, '2006-01-05', '(11 11111-1', 'filippettoleonardo@gmail.com', '$2y$12$zgwPTCrYSsxV5anaiKfKaeRc0yCDJw7.Dcshkt/pncHC67BXFHJcG', 'Leonardo Filippetto', NULL, NULL, NULL, NULL, '11111111', 'rua dos aimorés', '480', 'Apto. P13', 'Vila Costa e Silva', 'Campinas', 'ao lado do mercado Dia');
 
 -- --------------------------------------------------------
 
@@ -371,7 +372,7 @@ ALTER TABLE `vendas`
 -- AUTO_INCREMENT de tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id_anuncio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_anuncio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacoes`
@@ -389,13 +390,13 @@ ALTER TABLE `comentarios`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `vendas`
